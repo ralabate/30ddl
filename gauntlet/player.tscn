@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwl2b12apn8uh"]
+
+[ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://hq41f26qus78" path="res://lizard_prince_walk.glb" id="2_onrkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_4flbx"]
+material = SubResource("StandardMaterial3D_onrkg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+material = SubResource("StandardMaterial3D_4flbx")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 3
+script = ExtResource("1_4flbx")
+
+[node name="Direction" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+visible = false
+mesh = SubResource("PrismMesh_4flbx")
+
+[node name="Capsule" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="AnimatedMesh" parent="." instance=ExtResource("2_onrkg")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="AnimatedMesh" index="0"]
+bones/1/position = Vector3(1.22705e-09, 1.01165, 0.000848666)
+bones/3/rotation = Quaternion(0.485417, 0.0488834, -0.0661184, 0.870408)
+bones/4/rotation = Quaternion(0.117571, -0.0231199, -0.000322402, 0.992795)
+bones/5/rotation = Quaternion(-0.209398, 0.226537, 0.0627555, 0.949155)
+bones/6/rotation = Quaternion(-0.400814, -0.213569, 0.0988049, 0.885423)
+bones/8/rotation = Quaternion(-0.583348, -0.00384971, 0.0293971, 0.811681)
+bones/9/rotation = Quaternion(0.0126899, -0.0135825, -0.00249354, 0.999824)
+bones/10/rotation = Quaternion(0.0598093, 0.837025, -0.528112, -0.130037)
+bones/11/rotation = Quaternion(0.318765, 0.0272025, 0.00948658, 0.947396)
+bones/17/rotation = Quaternion(0.92717, 0.0465479, 0.26691, -0.258742)
+bones/18/rotation = Quaternion(-0.219886, -0.0662738, -0.00366079, 0.973265)
+bones/21/rotation = Quaternion(0.163593, 0.0186917, -0.0160143, 0.986221)
+bones/23/rotation = Quaternion(-0.28633, 0.26328, 0.0765004, 0.918067)
+bones/24/rotation = Quaternion(-0.0797172, 3.8319e-17, -4.16084e-19, 0.996818)
+
+[editable path="AnimatedMesh"]

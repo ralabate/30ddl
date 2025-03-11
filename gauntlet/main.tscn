@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://clsdp2e4yqkji"]
+
+[ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bwl2b12apn8uh" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c4hj0h8l8yjhl" path="res://level.glb" id="3_h2yge"]
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 1
+ambient_light_source = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.457983, 0.888961, 0, -0.888961, 0.457983, 0, 10.6771, 8.99311)
+environment = SubResource("Environment_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+TIME_BETWEEN_SHOTS = 0.25
+
+[node name="level" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="StaticBody3D" parent="level/Level" index="0"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.12941, -0.482963, 0, 0.965926, 0.258819, 0.5, -0.224144, 0.836516, 0, 9, 0)
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.12941, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 0, 9, 0)
+light_energy = 0.25
+sky_mode = 1
+
+[editable path="level"]
