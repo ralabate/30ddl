@@ -2,6 +2,7 @@ extends Area3D
 
 
 @export var SPEED = 5
+@export var DAMAGE = 1
 
 
 func _ready() -> void:
@@ -14,6 +15,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("badguys"):
-		body.damage()
+		body.damage(DAMAGE)
 
 	queue_free()
