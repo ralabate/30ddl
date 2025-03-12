@@ -1,6 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgek4hjrnvo73"]
+[gd_scene load_steps=16 format=3 uid="uid://bgek4hjrnvo73"]
 
 [ext_resource type="PackedScene" uid="uid://c4hj0h8l8yjhl" path="res://level.glb" id="1_u52ul"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_u52ul"]
+vertices = PackedVector3Array(-13.488, 1.98413, -9.4087, -9.73805, 1.98413, -9.4087, -14.738, 1.98413, -9.6587, -14.238, 1.98413, -8.9087, -14.738, 1.98413, 9.5913, -11.488, 1.98413, 9.5913, -11.988, 1.98413, 9.0913, -14.238, 1.98413, 0.3413, 2.51195, 1.98413, -9.1587, 2.76195, 1.98413, -3.1587, 4.26195, 1.98413, -3.1587, 4.51195, 1.98413, -9.1587, 12.012, 1.98413, -9.4087, -7.23805, 1.98413, -9.6587, 14.762, 1.98413, -9.6587, 13.512, 1.98413, -9.6587, 14.262, 1.98413, -1.1587, 13.512, 1.98413, 9.5913, 14.762, 1.98413, 9.5913, 3.51195, -0.01587, 2.0913, 3.51195, -0.01587, -2.1587, 1.76195, -0.01587, -2.4087, 1.76195, -0.01587, 2.3413, -10.988, -0.01587, 8.5913, 1.76195, -0.01587, 8.3413, -9.73805, -0.01587, -8.1587, -13.238, -0.01587, -8.1587, -13.238, -0.01587, -0.1587, -8.73805, -0.01587, -8.6587, 1.76195, -0.01587, -8.1587, 6.51195, -0.01587, -8.4087, 5.51195, -0.01587, -8.1587, 5.51195, -0.01587, -4.4087, 13.012, -0.01587, -4.6587, 12.762, -0.01587, -8.4087, 5.51195, -0.01587, -2.4087, 5.51195, -0.01587, 2.3413, 13.012, -0.01587, 4.5913, 5.51195, -0.01587, 4.3413, 4.26195, 1.98413, 9.0913, 4.26195, 1.98413, 3.3413, 2.76195, 1.98413, 3.3413, 2.51195, 1.98413, 9.3413, -6.23805, 1.98413, 9.3413, 9.26195, 1.98413, 9.5913, 11.262, -0.01587, 8.5913, 12.762, -0.01587, 8.5913, 5.51195, -0.01587, 8.3413)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(4, 7, 6), PackedInt32Array(3, 7, 2), PackedInt32Array(2, 7, 4), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 12), PackedInt32Array(12, 8, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 16), PackedInt32Array(14, 18, 16), PackedInt32Array(19, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(22, 24, 23), PackedInt32Array(27, 26, 25), PackedInt32Array(25, 28, 27), PackedInt32Array(27, 28, 23), PackedInt32Array(23, 28, 21), PackedInt32Array(23, 21, 22), PackedInt32Array(28, 29, 21), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 34), PackedInt32Array(32, 34, 33), PackedInt32Array(20, 35, 19), PackedInt32Array(19, 35, 36), PackedInt32Array(35, 33, 36), PackedInt32Array(36, 33, 37), PackedInt32Array(37, 38, 36), PackedInt32Array(35, 32, 33), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(42, 39, 44), PackedInt32Array(46, 45, 37), PackedInt32Array(37, 45, 47), PackedInt32Array(37, 47, 38)]
+cell_height = 0.5
+agent_height = 2.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u52ul"]
 points = PackedVector3Array(-0.920585, 1.01587, -0.888889, -1.01587, -1.01587, -1.01586, -0.603215, -1.01587, -1.01586, -1.01587, 1.01587, -1.01586, -1, -0.937721, -0.893773, -0.603215, 1.01587, -0.920644, -0.606439, -1, -0.889881, -0.603215, 1.01587, -1.01586, -1, 0.937721, -0.893773)
@@ -41,47 +47,52 @@ points = PackedVector3Array(0.154906, -1, 0.271183, 0.317445, 1.01587, 0.88883, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8b0r0"]
 points = PackedVector3Array(0.888727, 1.01587, 0.920644, -0.801674, -1, 0.919109, -0.761743, -0.952381, 1.01586, 0.928658, -1, 0.919109, -0.761743, 1.01587, 1.01586, 0.888727, 1.01587, 1.01586, 0.158649, 1.01587, 0.888889, 0.888727, -0.952381, 1.01586, -0.761743, 1.01587, 0.920644, 0.32958, -1, 0.885817, 0.163254, -1, 0.885817)
 
-[node name="level" instance=ExtResource("1_u52ul")]
+[node name="Node3D" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level" index="0"]
-collision_layer = 2
-collision_mask = 3
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_u52ul")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D" index="0"]
+[node name="level" parent="NavigationRegion3D" instance=ExtResource("1_u52ul")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/level/Level" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_u52ul")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Level/StaticBody3D" index="1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_vonw3")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Level/StaticBody3D" index="2"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_oi3di")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Level/StaticBody3D" index="3"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0b4ue")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Level/StaticBody3D" index="4"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_f2txt")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Level/StaticBody3D" index="5"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_1ainy")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Level/StaticBody3D" index="6"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_n6hdu")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Level/StaticBody3D" index="7"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_km5ld")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Level/StaticBody3D" index="8"]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_i2t4f")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Level/StaticBody3D" index="9"]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_8cye3")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Level/StaticBody3D" index="10"]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2orkt")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Level/StaticBody3D" index="11"]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_aicyk")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Level/StaticBody3D" index="12"]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_8b0r0")
+
+[editable path="NavigationRegion3D/level"]

@@ -12,6 +12,9 @@ ambient_light_source = 2
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0xm2m")
 
+[node name="BadguyNavTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.457983, 0.888961, 0, -0.888961, 0.457983, 0, 10.6771, 8.99311)
 environment = SubResource("Environment_h2yge")
@@ -32,10 +35,18 @@ sky_mode = 1
 [node name="level" parent="." instance=ExtResource("3_h2yge")]
 
 [node name="Badguy" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.039, 0, 5)
 
 [node name="Badguy2" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -8, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11208, 0, 5)
 
 [node name="Badguy3" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -8, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11208, 0, -0.837864)
+
+[node name="Badguy4" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9802, 0, -0.837864)
+
+[connection signal="timeout" from="BadguyNavTimer" to="." method="_on_badguy_nav_timer_timeout"]
+
+[editable path="level"]
+[editable path="level/NavigationRegion3D/level"]

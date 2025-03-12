@@ -16,3 +16,6 @@ shape = SubResource("CapsuleShape3D_apgvv")
 [node name="AnimatedMesh" parent="." instance=ExtResource("1_lf2yb")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
