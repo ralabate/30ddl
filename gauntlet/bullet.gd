@@ -14,6 +14,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	var health_component = body.get_node("HealthComponent") as HealthComponent
-	health_component.damage(1)
+	if body.has_node("HealthComponent"):
+		var health_component = body.get_node("HealthComponent") as HealthComponent
+		health_component.damage(1)
+	
 	queue_free()

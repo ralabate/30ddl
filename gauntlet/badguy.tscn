@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
 
 [node name="Badguy" type="CharacterBody3D"]
-collision_layer = 4
+collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_apgvv")
 

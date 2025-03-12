@@ -47,7 +47,7 @@ points = PackedVector3Array(0.154906, -1, 0.271183, 0.317445, 1.01587, 0.88883, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8b0r0"]
 points = PackedVector3Array(0.888727, 1.01587, 0.920644, -0.801674, -1, 0.919109, -0.761743, -0.952381, 1.01586, 0.928658, -1, 0.919109, -0.761743, 1.01587, 1.01586, 0.888727, 1.01587, 1.01586, 0.158649, 1.01587, 0.888889, 0.888727, -0.952381, 1.01586, -0.761743, 1.01587, 0.920644, 0.32958, -1, 0.885817, 0.163254, -1, 0.885817)
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_u52ul")
@@ -55,6 +55,8 @@ navigation_mesh = SubResource("NavigationMesh_u52ul")
 [node name="level" parent="NavigationRegion3D" instance=ExtResource("1_u52ul")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/level/Level" index="0"]
+collision_layer = 2
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/level/Level/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_u52ul")
