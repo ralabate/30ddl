@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("badguys"):
-		body.damage(DAMAGE)
-
+	var health_component = body.get_node("HealthComponent") as HealthComponent
+	health_component.damage(1)
 	queue_free()

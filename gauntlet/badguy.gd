@@ -1,13 +1,9 @@
 extends CharacterBody3D
 
 
-@export var MAX_HITPOINTS = 5
-var current_hitpoints = MAX_HITPOINTS
-
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 
 var movement_speed: float = 0.5
-
 
 
 func _ready():
@@ -36,12 +32,6 @@ func _physics_process(delta):
 		#" target: ", navigation_agent.target_position)
 	
 	move_and_slide()
-
-
-func damage(amount):
-	current_hitpoints -= amount
-	if current_hitpoints <= 0:
-		queue_free()
 
 
 func set_movement_target(movement_target: Vector3):
