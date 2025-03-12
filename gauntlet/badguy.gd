@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 
-var movement_speed: float = 2.0
+var movement_speed: float = 0.5
 
 
 func _ready():

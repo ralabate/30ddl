@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
+
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 
 @export var SPEED = 2.5
-@export var TIME_BETWEEN_SHOTS = 0.1
+@export var TIME_BETWEEN_SHOTS = 1
 
 @onready var animation_player = %AnimatedMesh/AnimationPlayer
 
