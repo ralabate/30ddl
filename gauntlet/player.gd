@@ -24,7 +24,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept") and can_shoot:
-		shoot.emit(bullet_template, rotation, position)
+		shoot.emit(
+				bullet_template,
+				rotation,
+				transform.origin - transform.basis.z
+			)
 		can_shoot = false
 		shot_timer.start()
 
