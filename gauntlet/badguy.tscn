@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dysqmwq3wem2k"]
+
+[ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguy.gd" id="1_apgvv"]
+[ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://bad_lizard_idle.glb" id="1_lf2yb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
+
+[node name="Badguy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_apgvv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_apgvv")
+
+[node name="AnimatedMesh" parent="." instance=ExtResource("1_lf2yb")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
