@@ -1,7 +1,7 @@
 extends Area3D
 
 
-@export var SPEED = 10
+@export var SPEED = 5
 
 
 func _ready() -> void:
