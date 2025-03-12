@@ -1,4 +1,6 @@
 .godot/
 /android/
-
+/backup/
 *.tmp
+*~
+*.kra
