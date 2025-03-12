@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	var badguy_spawners = get_tree().get_nodes_in_group("spawners")
 	for spawner in badguy_spawners:
-		spawner.spawn_badguy.connect(_on_spawn_badguy)
+		spawner.spawned_badguy.connect(_on_spawned_badguy)
 	
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
@@ -32,7 +32,7 @@ func _on_badguy_nav_timer_timeout() -> void:
 		badguy.set_movement_target(player.global_position)
 
 
-func _on_spawn_badguy(position: Vector3) -> void:
+func _on_spawned_badguy(position: Vector3) -> void:
 	var badguy = badguy_template.instantiate()
 	add_child(badguy)
 	badguy.position = position

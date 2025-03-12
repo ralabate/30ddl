@@ -1,15 +1,13 @@
 extends StaticBody3D
 
 
-signal spawn_badguy(position: Vector3)
-
-@onready var timer = %Timer
+signal spawned_badguy(position: Vector3)
 
 
 func _ready() -> void:
 	add_to_group("spawners")
-	timer.start()
+	spawned_badguy.emit.call_deferred(position)
 
 
 func _on_timer_timeout() -> void:
-	spawn_badguy.emit(global_position)
+	spawned_badguy.emit(position)
