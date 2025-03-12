@@ -53,4 +53,7 @@ bones/21/rotation = Quaternion(0.163593, 0.0186917, -0.0160143, 0.986221)
 bones/23/rotation = Quaternion(-0.28633, 0.26328, 0.0765004, 0.918067)
 bones/24/rotation = Quaternion(-0.0797172, 3.8319e-17, -4.16084e-19, 0.996818)
 
+[node name="Mesh" parent="AnimatedMesh/Skeleton3D" index="0"]
+layers = 2
+
 [editable path="AnimatedMesh"]
