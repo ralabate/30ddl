@@ -8,7 +8,7 @@
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.950226, 0.908877, 0.874709, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0xm2m")
@@ -17,9 +17,9 @@ script = ExtResource("1_0xm2m")
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.546702, 0.837327, 0, -0.837327, 0.546702, 0, 54.6552, 36.4667)
+transform = Transform3D(1, 0, 0, 0, 0.526956, 0.849893, 0, -0.849893, 0.526956, 0, 29.1784, 19.5912)
 environment = SubResource("Environment_h2yge")
-fov = 17.0
+fov = 31.8
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 unique_name_in_owner = true
@@ -27,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 7)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+visible = false
 light_cull_mask = 4294967293
 sky_mode = 1
 
