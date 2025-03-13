@@ -22,7 +22,6 @@ wait_time = 4.0
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("SphereMesh_5vgoc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

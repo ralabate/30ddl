@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wpa7ca502hg0"]
+
+[ext_resource type="PackedScene" uid="uid://b8awa1md4dbt6" path="res://level_assets/exported/cross.glb" id="1_m6dvx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r61cq"]
+points = PackedVector3Array(2, 2, 0.5, 2, 2, -0.5, 1, 2, 1, 2, 0, 0.5, 2, 0, -0.5, 1, 2, -1, 1, 0, 1, -1, 2, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -2, 2, 0.5, -1, 0, -1, -2, 2, -0.5, -2, 0, 0.5, -2, 0, -0.5)
+
+[node name="cross" instance=ExtResource("1_m6dvx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cross" index="0"]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cross/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_r61cq")

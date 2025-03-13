@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnpsmhokc3oxo"
-path="res://.godot/imported/cross_3x3.glb-8cfc0e9feea79222c16a2c9ad11ce33b.scn"
+uid="uid://btgqoeyu5ion0"
+path="res://.godot/imported/wall.glb-d8e2c9363043ff8dd90cef3df971d016.scn"
 
 [deps]
 
-source_file="res://level_assets/exported/cross_3x3.glb"
-dest_files=["res://.godot/imported/cross_3x3.glb-8cfc0e9feea79222c16a2c9ad11ce33b.scn"]
+source_file="res://level_assets/exported/wall.glb"
+dest_files=["res://.godot/imported/wall.glb-d8e2c9363043ff8dd90cef3df971d016.scn"]
 
 [params]
 
