@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
+signal mine_spawned(mine: PackedScene, location: Vector3)
 
 @export var SPEED = 2.5
 @export var TIME_BETWEEN_SHOTS = 1
@@ -9,6 +10,8 @@ signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 @onready var animation_player = %AnimatedMesh/AnimationPlayer
 
 var bullet_template = preload("res://bullet.tscn")
+var mine_template = preload("res://mine.tscn")
+
 var can_shoot = true
 var shot_timer: Timer
 
@@ -31,6 +34,9 @@ func _physics_process(delta: float) -> void:
 			)
 		can_shoot = false
 		shot_timer.start()
+		
+	if Input.is_action_just_pressed("player_mine"):
+		mine_spawned.emit(mine_template, global_position)
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta

@@ -8,6 +8,7 @@ extends Node3D
 
 func _ready() -> void:
 	player.shoot.connect(_on_player_shoot)
+	player.mine_spawned.connect(_on_player_spawned_mine)
 	
 	var badguy_spawners = get_tree().get_nodes_in_group("spawners")
 	for spawner in badguy_spawners:
@@ -24,6 +25,12 @@ func _on_player_shoot(bullet_template: PackedScene, rotation: Vector3, location:
 	add_child(bullet)
 	bullet.rotation = rotation
 	bullet.position = location
+
+
+func _on_player_spawned_mine(mine_template: PackedScene, location: Vector3):
+	var mine = mine_template.instantiate()
+	add_child(mine)
+	mine.position = location
 
 
 func _on_badguy_nav_timer_timeout() -> void:
