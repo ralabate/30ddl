@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4hm3jsxo7vky"]
+
+[ext_resource type="PackedScene" uid="uid://cshijb70upcqh" path="res://level_assets/floor_30x20.tscn" id="1_qc7lj"]
+[ext_resource type="PackedScene" uid="uid://ukufsm8g1r0q" path="res://level_assets/corner_2x2.tscn" id="2_tswju"]
+[ext_resource type="PackedScene" uid="uid://drq3xn0egsrap" path="res://level_assets/cross_3x3.tscn" id="3_p33od"]
+[ext_resource type="PackedScene" uid="uid://becmmpgh5517c" path="res://level_assets/wall_1x2.tscn" id="4_48gry"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_qc7lj"]
+vertices = PackedVector3Array(-2, 2, -1.25, -1, 2, -2, -1, 2, -3.25, 0.25, 2, -3.5, 0.25, 2, -9.5, -14.5, 2, -9.5, -14.5, 2, -0.25, -2, 2, -0.25, 1.25, 2, -3.25, 1.25, 2, -1.75, 2.25, 2, -1, 14.5, 2, -0.25, 14.5, 2, -9.5, 2.25, 2, -0.25, 1, 4, 0.5, 1, 4, -0.75, 0.25, 4, -1.25, -1, 4, -0.75, -1, 4, 0.5, -0.25, 4, 1.25, 0.5, 2, 9.5, 0.5, 2, 6.25, -1, 2, 6, -14.5, 2, 9.5, -1, 2, 2, -2, 2, 1, 1.25, 2, 1.5, 1.25, 2, 3.5, 2.25, 2, 4, 2.25, 2, 0.75, 14.5, 2, 9.5, 2.25, 2, 5.75, 1.75, 2, 6.25, 0, 4, 5, 1, 4, 5, 0.5, 4, 4, 0, 4, 4)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 6), PackedInt32Array(0, 7, 6), PackedInt32Array(10, 9, 8), PackedInt32Array(4, 8, 3), PackedInt32Array(8, 4, 10), PackedInt32Array(10, 4, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(11, 13, 10), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 18), PackedInt32Array(18, 14, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 6), PackedInt32Array(6, 22, 23), PackedInt32Array(6, 7, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(28, 29, 11), PackedInt32Array(31, 28, 30), PackedInt32Array(30, 28, 11), PackedInt32Array(20, 21, 32), PackedInt32Array(32, 31, 20), PackedInt32Array(20, 31, 30), PackedInt32Array(29, 13, 11), PackedInt32Array(36, 35, 33), PackedInt32Array(33, 35, 34)]
+cell_height = 1.0
+agent_height = 2.0
+
+[node name="ModularLevel" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_qc7lj")
+
+[node name="floor_30x20" parent="." instance=ExtResource("1_qc7lj")]
+
+[node name="cross_3x3" parent="floor_30x20" instance=ExtResource("3_p33od")]
+
+[node name="wall_1x2" parent="floor_30x20" instance=ExtResource("4_48gry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="wall_1x3" parent="floor_30x20" instance=ExtResource("4_48gry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="corner_2x2" parent="floor_30x20" instance=ExtResource("2_tswju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)

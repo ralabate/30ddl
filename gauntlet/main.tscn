@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bwl2b12apn8uh" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bgek4hjrnvo73" path="res://level.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://modular_level.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguy_spawner.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
@@ -30,12 +30,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 light_cull_mask = 4294967293
 sky_mode = 1
 
-[node name="level" parent="." instance=ExtResource("3_h2yge")]
-
 [node name="BadguySpawner" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42472, 1, -6.54887)
 
 [node name="BadguySpawner2" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 7.451)
+
+[node name="ModularLevel" parent="." instance=ExtResource("4_1bvp3")]
 
 [connection signal="timeout" from="BadguyNavTimer" to="." method="_on_badguy_nav_timer_timeout"]
