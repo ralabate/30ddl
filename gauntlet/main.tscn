@@ -17,9 +17,9 @@ script = ExtResource("1_0xm2m")
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.526956, 0.849893, 0, -0.849893, 0.526956, 0, 29.1784, 19.5912)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 51.2774, 52.0472)
 environment = SubResource("Environment_h2yge")
-fov = 31.8
+fov = 15.0
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 unique_name_in_owner = true
