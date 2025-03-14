@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4hm3jsxo7vky"]
 
-[ext_resource type="PackedScene" uid="uid://cshijb70upcqh" path="res://level_assets/floor_30x20.tscn" id="1_qc7lj"]
 [ext_resource type="PackedScene" uid="uid://ct4ym68qe3wd" path="res://level_assets/wall.tscn" id="2_35a4x"]
 [ext_resource type="PackedScene" uid="uid://djvroxe65rnc3" path="res://level_assets/tjunction.tscn" id="3_coqlu"]
 [ext_resource type="PackedScene" uid="uid://dx0nwcckq1tgq" path="res://level_assets/corner.tscn" id="4_qc7lj"]
+[ext_resource type="PackedScene" uid="uid://c3r2x4mms7d0u" path="res://level_assets/floor.tscn" id="4_tswju"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qc7lj"]
 vertices = PackedVector3Array(-8.75, 2, -2.5, -8.75, 2, -3.25, -10, 2, -3.5, -10, 2, -2.25, -14.5, 2, -9.5, -4, 2, 9.5, -4, 2, 6.25, -10, 2, 6, -14.5, 2, 9.5, -10, 2, -9.5, -7.75, 2, -2.25, -7.75, 2, -3.75, -2, 2, 0, -2, 2, -4.25, -0.75, 2, -4.5, -0.75, 2, -5.25, -2, 2, -5.5, -2, 2, -9.5, -7.75, 2, -9.5, -1.75, 2, 4, -1.5, 2, 0.25, -7.5, 2, 4, 0.25, 2, -4.25, 0.25, 2, -5.75, 0.25, 2, -9.5, 0.5, 2, -2, 10.5, 2, -2, 14.5, 2, -9.5, 10.75, 2, -1, 12.5, 2, -1, 12.75, 2, -2, 14.5, 2, -2, -1, 4, -1.75, -1, 4, -1, -0.25, 4, -1, 12.5, 2, 4, 12.75, 2, 5, 14.5, 2, 5, 14.5, 2, 0.25, 12.75, 2, 0.25, 10.5, 2, 0.25, 3.75, 2, 4, 3.25, 2, 0.25, 3.5, 2, 4.5, -1.25, 2, 5.75, -1.75, 2, 6, -1.75, 2, 9.5, 5, 2, 9.5, 5.25, 2, 6.25, 3.5, 2, 6, -1.25, 2, 4.25, -9, 4, 4.25, -9, 4, 5, -8.25, 4, 5, -3.25, 4, 5.75, -2.5, 4, 5.5, -2.5, 4, 5, -3.75, 4, 5, 12.25, 2, 6.25, 14.5, 2, 9.5)
@@ -13,8 +13,6 @@ agent_height = 2.0
 
 [node name="ModularLevel" type="NavigationRegion3D"]
 navigation_mesh = SubResource("NavigationMesh_qc7lj")
-
-[node name="floor_30x20" parent="." instance=ExtResource("1_qc7lj")]
 
 [node name="wall" parent="." instance=ExtResource("2_35a4x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, 5)
@@ -96,3 +94,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 
 
 [node name="wall18" parent="." instance=ExtResource("2_35a4x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -1)
+
+[node name="floor" parent="." instance=ExtResource("4_tswju")]
