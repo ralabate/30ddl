@@ -39,7 +39,7 @@ size = Vector2(0.2, 0.2)
 
 [node name="Mine" type="Area3D"]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 4
 script = ExtResource("1_iuis7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -51,7 +51,7 @@ mesh = SubResource("CylinderMesh_iuis7")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 autostart = true
 

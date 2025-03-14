@@ -39,7 +39,8 @@ material = SubResource("StandardMaterial3D_v7oki")
 size = Vector2(0.2, 0.2)
 
 [node name="Bullet" type="Area3D"]
-collision_mask = 6
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_v7oki")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

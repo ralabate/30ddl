@@ -8,8 +8,6 @@ points = PackedVector3Array(2, 2, 0.5, 2, 2, -0.5, 1, 2, 1, 2, 0, 0.5, 2, 0, -0.
 [node name="cross" instance=ExtResource("1_m6dvx")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cross" index="0"]
-collision_layer = 2
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cross/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_r61cq")

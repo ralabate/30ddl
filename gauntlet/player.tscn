@@ -1,34 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl2b12apn8uh"]
+[gd_scene load_steps=4 format=3 uid="uid://bwl2b12apn8uh"]
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://hq41f26qus78" path="res://lizard_prince_walk.glb" id="2_onrkg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_4flbx"]
-material = SubResource("StandardMaterial3D_onrkg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
-material = SubResource("StandardMaterial3D_4flbx")
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 6
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_4flbx")
-
-[node name="Direction" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
-visible = false
-mesh = SubResource("PrismMesh_4flbx")
-
-[node name="Capsule" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh265")
