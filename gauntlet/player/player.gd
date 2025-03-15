@@ -52,13 +52,10 @@ func _physics_process(delta: float) -> void:
 
 		self.velocity.x = direction.x * SPEED
 		self.velocity.z = direction.z * SPEED
-		
-		animation_player.play("lizard_prince_walk")
+
 	else:
 		self.velocity.x = move_toward(velocity.x, 0, SPEED)
 		self.velocity.z = move_toward(velocity.z, 0, SPEED)
-		
-		animation_player.stop()
 
 	move_and_slide()
 
