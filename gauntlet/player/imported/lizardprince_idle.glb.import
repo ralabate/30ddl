@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b8lrhgxp8l2x"
-path="res://.godot/imported/lizardprince_idle.glb-2a591031764bc67e1ebcdd7e7530faf0.scn"
+path="res://.godot/imported/lizardprince_idle.glb-dc4bf6d22ebfefd5381ccfc1373f9f50.scn"
 
 [deps]
 
-source_file="res://characters/lizardprince_idle.glb"
-dest_files=["res://.godot/imported/lizardprince_idle.glb-2a591031764bc67e1ebcdd7e7530faf0.scn"]
+source_file="res://player/imported/lizardprince_idle.glb"
+dest_files=["res://.godot/imported/lizardprince_idle.glb-dc4bf6d22ebfefd5381ccfc1373f9f50.scn"]
 
 [params]
 
