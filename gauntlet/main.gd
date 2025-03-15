@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@onready var badguy_template = preload("res://badguy.tscn")
+@onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player = %Player
 @onready var nav_timer = %BadguyNavTimer
 

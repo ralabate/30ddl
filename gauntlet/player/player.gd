@@ -9,8 +9,8 @@ signal mine_spawned(mine: PackedScene, location: Vector3)
 
 @onready var animation_player = %AnimatedMesh/AnimationPlayer
 
-var bullet_template = preload("res://bullet.tscn")
-var mine_template = preload("res://mine.tscn")
+var bullet_template = preload("res://player/bullet.tscn")
+var mine_template = preload("res://player/mine.tscn")
 
 var can_shoot = true
 var shot_timer: Timer

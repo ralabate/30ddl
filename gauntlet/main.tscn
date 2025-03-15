@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://clsdp2e4yqkji"]
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bwl2b12apn8uh" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://modular_level.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguy_spawner.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bwl2b12apn8uh" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://level/modular_level.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguys/badguy_spawner.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1

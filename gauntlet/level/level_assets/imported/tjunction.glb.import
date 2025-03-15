@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dgvjlbbo4hmtw"
-path="res://.godot/imported/badguy_spawner.glb-547df6cf3b435cd7176de2558ebb8d54.scn"
+uid="uid://bga5btisymw7b"
+path="res://.godot/imported/tjunction.glb-65153d7cbcaa05fa30c5d71953033edd.scn"
 
 [deps]
 
-source_file="res://badguy_spawner.glb"
-dest_files=["res://.godot/imported/badguy_spawner.glb-547df6cf3b435cd7176de2558ebb8d54.scn"]
+source_file="res://level/level_assets/imported/tjunction.glb"
+dest_files=["res://.godot/imported/tjunction.glb-65153d7cbcaa05fa30c5d71953033edd.scn"]
 
 [params]
 

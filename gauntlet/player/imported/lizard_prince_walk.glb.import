@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://qo85vi3b3odi"
-path="res://.godot/imported/bad_lizard_idle.glb-f1aeaa384509b2c0815566670fea7b58.scn"
+uid="uid://hq41f26qus78"
+path="res://.godot/imported/lizard_prince_walk.glb-202e2b74e38ee7e72b8c995b4d80fd24.scn"
 
 [deps]
 
-source_file="res://bad_lizard_idle.glb"
-dest_files=["res://.godot/imported/bad_lizard_idle.glb-f1aeaa384509b2c0815566670fea7b58.scn"]
+source_file="res://player/imported/lizard_prince_walk.glb"
+dest_files=["res://.godot/imported/lizard_prince_walk.glb-202e2b74e38ee7e72b8c995b4d80fd24.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
-"bad_lizard_idle": {
+"lizard_prince_walk": {
 "save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",

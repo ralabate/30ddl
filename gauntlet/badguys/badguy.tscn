@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dysqmwq3wem2k"]
 
-[ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguy.gd" id="1_apgvv"]
-[ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://bad_lizard_idle.glb" id="1_lf2yb"]
+[ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_apgvv"]
+[ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://badguys/imported/bad_lizard_idle.glb" id="1_lf2yb"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_0b8a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]

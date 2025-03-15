@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bga5btisymw7b"
-path="res://.godot/imported/tjunction.glb-b5e1b75b52c785a07a4f0fdf957d264a.scn"
+uid="uid://btgqoeyu5ion0"
+path="res://.godot/imported/wall.glb-61207d7db374eaadfff66a5d74b10097.scn"
 
 [deps]
 
-source_file="res://level_assets/exported/tjunction.glb"
-dest_files=["res://.godot/imported/tjunction.glb-b5e1b75b52c785a07a4f0fdf957d264a.scn"]
+source_file="res://level/level_assets/imported/wall.glb"
+dest_files=["res://.godot/imported/wall.glb-61207d7db374eaadfff66a5d74b10097.scn"]
 
 [params]
 

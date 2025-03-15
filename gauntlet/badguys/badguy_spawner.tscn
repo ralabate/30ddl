@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcyd6q7bb3k6m"]
 
-[ext_resource type="Script" uid="uid://cj0c35fieqoef" path="res://badguy_spawner.gd" id="1_irkoj"]
+[ext_resource type="Script" uid="uid://cj0c35fieqoef" path="res://badguys/badguy_spawner.gd" id="1_irkoj"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="2_5vgoc"]
-[ext_resource type="PackedScene" uid="uid://dgvjlbbo4hmtw" path="res://badguy_spawner.glb" id="3_od4cw"]
+[ext_resource type="PackedScene" uid="uid://dgvjlbbo4hmtw" path="res://badguys/imported/badguy_spawner.glb" id="3_od4cw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_od4cw"]
 

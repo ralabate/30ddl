@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccmtk8uklp2km"
-path="res://.godot/imported/corner.glb-5527db5e33d2ca1212faef69a9fdc8c7.scn"
+uid="uid://dgvjlbbo4hmtw"
+path="res://.godot/imported/badguy_spawner.glb-73bbe14e61fe8d607c08835bf9ebd036.scn"
 
 [deps]
 
-source_file="res://level_assets/exported/corner.glb"
-dest_files=["res://.godot/imported/corner.glb-5527db5e33d2ca1212faef69a9fdc8c7.scn"]
+source_file="res://badguys/imported/badguy_spawner.glb"
+dest_files=["res://.godot/imported/badguy_spawner.glb-73bbe14e61fe8d607c08835bf9ebd036.scn"]
 
 [params]
 
