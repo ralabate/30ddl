@@ -17,20 +17,15 @@ func _ready():
 
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
-		#print("finished!")
 		return
 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-	
-	#print(
-		#"velocity: ", velocity, 
-		#" current: ", current_agent_position, 
-		#" next: ", next_path_position,
-		#" target: ", navigation_agent.target_position)
-	
+
+	var direction = velocity.normalized()
+	rotation.y = atan2(-direction.x, -direction.z)
 	move_and_slide()
 
 
