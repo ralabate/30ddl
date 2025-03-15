@@ -29,8 +29,15 @@ func _on_player_shoot(bullet_template: PackedScene, rotation: Vector3, location:
 
 func _on_player_spawned_mine(mine_template: PackedScene, location: Vector3):
 	var mine = mine_template.instantiate()
+	mine.exploded.connect(_on_mine_exploded)
 	add_child(mine)
 	mine.position = location
+
+
+func _on_mine_exploded(explosion_template: PackedScene, location: Vector3):
+	var explosion = explosion_template.instantiate()
+	add_child(explosion)
+	explosion.position = location
 
 
 func _on_badguy_nav_timer_timeout() -> void:

@@ -6,22 +6,21 @@
 radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuis7"]
-transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.352941, 0, 0.501961)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_iuis7"]
+[sub_resource type="TorusMesh" id="TorusMesh_i6hay"]
 material = SubResource("StandardMaterial3D_iuis7")
-top_radius = 2.0
-bottom_radius = 2.0
-height = 0.25
+inner_radius = 1.75
+outer_radius = 2.0
+rings = 8
+ring_segments = 4
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iuis7"]
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 1.0
 emission_ring_radius = 2.0
-emission_ring_inner_radius = 0.0
+emission_ring_inner_radius = 1.75
 emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
@@ -31,7 +30,6 @@ gravity = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6hay"]
 shading_mode = 0
-albedo_color = Color(0.843137, 0.588235, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_i213m"]
 material = SubResource("StandardMaterial3D_i6hay")
@@ -47,7 +45,7 @@ unique_name_in_owner = true
 shape = SubResource("CylinderShape3D_ho4jl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_iuis7")
+mesh = SubResource("TorusMesh_i6hay")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -57,6 +55,6 @@ autostart = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 16
-lifetime = 0.48
+lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_iuis7")
 draw_pass_1 = SubResource("QuadMesh_i213m")

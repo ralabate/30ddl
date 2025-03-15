@@ -1,7 +1,11 @@
 extends Area3D
 
 
+signal exploded(explosion_template: PackedScene, location: Vector3)
+
+@onready var explosion = preload("res://vfx/mine_explosion.tscn")
 @onready var timer = %Timer
+
 var damage_list = []
 
 
@@ -25,5 +29,6 @@ func _on_timer_timeout() -> void:
 		if badguy.has_node("HealthComponent"):
 			var health_component = badguy.get_node("HealthComponent") as HealthComponent
 			health_component.damage(5)
-			
+	
+	exploded.emit(explosion, global_position)
 	queue_free()
