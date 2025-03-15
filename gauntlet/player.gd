@@ -36,7 +36,10 @@ func _physics_process(delta: float) -> void:
 		shot_timer.start()
 		
 	if Input.is_action_just_pressed("player_mine"):
-		mine_spawned.emit(mine_template, global_position)
+		mine_spawned.emit(
+				mine_template,
+				transform.origin - transform.basis.y
+			)
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
