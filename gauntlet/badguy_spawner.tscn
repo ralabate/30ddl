@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcyd6q7bb3k6m"]
+[gd_scene load_steps=5 format=3 uid="uid://dcyd6q7bb3k6m"]
 
 [ext_resource type="Script" uid="uid://cj0c35fieqoef" path="res://badguy_spawner.gd" id="1_irkoj"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="2_5vgoc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irkoj"]
-albedo_color = Color(0, 1, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_5vgoc"]
-material = SubResource("StandardMaterial3D_irkoj")
+[ext_resource type="PackedScene" uid="uid://dgvjlbbo4hmtw" path="res://badguy_spawner.glb" id="3_od4cw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_od4cw"]
 
@@ -21,9 +16,6 @@ unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_5vgoc")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_od4cw")
 
@@ -31,5 +23,7 @@ shape = SubResource("SphereShape3D_od4cw")
 script = ExtResource("2_5vgoc")
 MAX_HEALTH = 10
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
+
+[node name="badguy_spawner" parent="." instance=ExtResource("3_od4cw")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
