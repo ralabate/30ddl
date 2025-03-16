@@ -13,9 +13,6 @@ ambient_light_color = Color(0.950226, 0.908877, 0.874709, 1)
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0xm2m")
 
-[node name="BadguyNavTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 51.2774, 52.0472)
 environment = SubResource("Environment_h2yge")
@@ -38,5 +35,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57528, 1, -6.54887)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 7.451)
 
 [node name="ModularLevel" parent="." instance=ExtResource("4_1bvp3")]
-
-[connection signal="timeout" from="BadguyNavTimer" to="." method="_on_badguy_nav_timer_timeout"]

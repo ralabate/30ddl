@@ -24,6 +24,10 @@ layers = 2
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
 
+[node name="NavigationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_0b8a1")
 MAX_HEALTH = 5

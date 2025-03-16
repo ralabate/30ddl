@@ -3,7 +3,6 @@ extends Node3D
 
 @onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player = %Player
-@onready var nav_timer = %BadguyNavTimer
 
 
 func _ready() -> void:
@@ -16,8 +15,6 @@ func _ready() -> void:
 	
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
-
-	nav_timer.start()
 
 
 func _on_player_shoot(bullet_template: PackedScene, rotation: Vector3, location: Vector3):
@@ -40,13 +37,8 @@ func _on_mine_exploded(explosion_template: PackedScene, location: Vector3):
 	explosion.position = location
 
 
-func _on_badguy_nav_timer_timeout() -> void:
-	var badguys = get_tree().get_nodes_in_group("badguys")
-	for badguy in badguys:
-		badguy.set_movement_target(player.global_position)
-
-
 func _on_spawned_badguy(position: Vector3) -> void:
 	var badguy = badguy_template.instantiate()
 	add_child(badguy)
+	badguy.target = player
 	badguy.position = position
