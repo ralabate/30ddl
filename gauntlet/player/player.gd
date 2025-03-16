@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: PackedScene, location: Vector3)
+signal decoy_spawned(decoy: PackedScene, location: Vector3)
 
 @export var SPEED = 2.5
 @export var TIME_BETWEEN_SHOTS = 1
@@ -11,6 +12,7 @@ signal mine_spawned(mine: PackedScene, location: Vector3)
 
 var bullet_template = preload("res://player/bullet.tscn")
 var mine_template = preload("res://player/mine.tscn")
+var decoy_template = preload("res://player/decoy.tscn")
 
 var can_shoot = true
 var shot_timer: Timer
@@ -26,6 +28,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Shooting
 	if Input.is_action_pressed("ui_accept") and can_shoot:
 		shoot.emit(
 				bullet_template,
@@ -34,20 +37,25 @@ func _physics_process(delta: float) -> void:
 			)
 		can_shoot = false
 		shot_timer.start()
-		
-	if Input.is_action_just_pressed("player_mine"):
-		mine_spawned.emit(
-				mine_template,
-				transform.origin - transform.basis.y
-			)
 
+	# Mines
+	if Input.is_action_just_pressed("player_mine"):
+		mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
+
+	# Player decoys
+	if Input.is_action_just_pressed("player_decoy"):
+		decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
+
+	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Movement input
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
 
 	if direction:
+		# Rotate to face the direction we're moving
 		rotation.y = atan2(-direction.x, -direction.z)
 
 		self.velocity.x = direction.x * SPEED
@@ -57,6 +65,7 @@ func _physics_process(delta: float) -> void:
 		self.velocity.x = move_toward(velocity.x, 0, SPEED)
 		self.velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	# Do it
 	move_and_slide()
 
 
