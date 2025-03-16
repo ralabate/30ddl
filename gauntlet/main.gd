@@ -49,7 +49,8 @@ func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
 func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
 	# Reset their target to the player
 	for affected in affected_list:
-		if affected.is_in_group("badguys"):
+		if affected != null and is_queued_for_deletion() == false\
+		and affected.is_in_group("badguys"):
 			affected.target = player
 
 
