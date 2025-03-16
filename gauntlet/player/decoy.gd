@@ -6,7 +6,7 @@ signal done(affected_list: Array[Node3D])
 @onready var visual: MeshInstance3D = %Visual
 @onready var lifetime_timer: Timer = %LifetimeTimer
 
-var baduy_list = []
+var baduy_list: Array[Node3D] = []
 
 
 # Called when the node enters the scene tree for the first time.
