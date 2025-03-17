@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://clsdp2e4yqkji"]
+[gd_scene load_steps=7 format=3 uid="uid://clsdp2e4yqkji"]
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bwl2b12apn8uh" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://level/modular_level.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cis78mxrxyjlq" path="res://level/bridge.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguys/badguy_spawner.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
@@ -35,3 +36,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57528, 1, -6.54887)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 7.451)
 
 [node name="ModularLevel" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="EastBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 5)
+linked_bridge = NodePath("../WestBridge")
+
+[node name="WestBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("5_7mycd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0, 5)
+linked_bridge = NodePath("../EastBridge")
+
+[editable path="EastBridge"]
+[editable path="WestBridge"]
