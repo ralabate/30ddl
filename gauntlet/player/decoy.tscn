@@ -1,14 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj3m0gkysy4q1"]
+[gd_scene load_steps=10 format=3 uid="uid://dj3m0gkysy4q1"]
 
 [ext_resource type="Script" uid="uid://cbwhkcm1auist" path="res://player/decoy.gd" id="1_tpm8h"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gevvu"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_gevvu"]
-material = SubResource("StandardMaterial3D_gevvu")
+[ext_resource type="PackedScene" uid="uid://b8lrhgxp8l2x" path="res://player/imported/lizardprince_idle.glb" id="2_etp58"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gevvu"]
 radius = 5.0
@@ -24,22 +17,98 @@ top_radius = 5.0
 bottom_radius = 5.0
 height = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etp58"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0, 0.478431, 1)
+
+[sub_resource type="Animation" id="Animation_0hp2w"]
+resource_name = "lifetime"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lizardprince_idle/Skeleton3D/Mesh:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.478431, 1), Color(1, 0, 0.478431, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gxpjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lizardprince_idle/Skeleton3D/Mesh:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.478431, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ba2vu"]
+_data = {
+&"RESET": SubResource("Animation_gxpjd"),
+&"lifetime": SubResource("Animation_0hp2w")
+}
+
 [node name="Decoy" type="Area3D"]
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_tpm8h")
 
-[node name="Visual" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("PrismMesh_gevvu")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_gevvu")
 
 [node name="DebugAreaVisualizer" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_tpm8h")
 
-[node name="LifetimeTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 10.0
-autostart = true
+[node name="lizardprince_idle" parent="." instance=ExtResource("2_etp58")]
+
+[node name="Skeleton3D" parent="lizardprince_idle" index="0"]
+bones/1/position = Vector3(-1.09077e-10, -8.78567e-07, 0.803342)
+bones/5/rotation = Quaternion(0.547515, 1.65361e-07, 1.08196e-07, 0.836796)
+bones/14/rotation = Quaternion(0.669865, 0.0202461, 0.0179766, 0.741989)
+bones/15/rotation = Quaternion(0.11288, -0.0102715, -0.000642908, 0.993555)
+bones/16/rotation = Quaternion(-0.456382, -0.0198535, 0.0120512, 0.889481)
+bones/17/rotation = Quaternion(-0.272795, 0.0124366, -0.00365664, 0.961985)
+bones/19/rotation = Quaternion(-0.741989, 0.0179766, -0.0202461, 0.669865)
+bones/20/rotation = Quaternion(0.11288, -0.0102715, -0.000642909, 0.993555)
+bones/21/rotation = Quaternion(-0.456382, -0.0198535, 0.0120512, 0.889481)
+bones/22/rotation = Quaternion(-0.272795, 0.0124366, -0.00365664, 0.961985)
+
+[node name="Mesh" parent="lizardprince_idle/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_etp58")
+
+[node name="AnimationPlayer" parent="lizardprince_idle" index="1"]
+autoplay = "lizardprince_idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ba2vu")
+}
+autoplay = "lifetime"
+
+[editable path="lizardprince_idle"]
