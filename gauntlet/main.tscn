@@ -42,8 +42,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 5)
 linked_bridge = NodePath("../WestBridge")
 
 [node name="WestBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("5_7mycd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0, -7)
 linked_bridge = NodePath("../EastBridge")
+
+[node name="NorthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("5_7mycd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -13)
+linked_bridge = NodePath("../SouthBridge")
+
+[node name="SouthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("5_7mycd")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9, 0, 13)
+linked_bridge = NodePath("../NorthBridge")
 
 [editable path="EastBridge"]
 [editable path="WestBridge"]
+[editable path="NorthBridge"]
+[editable path="SouthBridge"]
