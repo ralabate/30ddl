@@ -25,6 +25,7 @@ func _ready() -> void:
 	shot_timer.autostart = false
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	add_child(shot_timer)
+	animation_player.play("lizardprince_idle")
 
 
 func _physics_process(delta: float) -> void:
