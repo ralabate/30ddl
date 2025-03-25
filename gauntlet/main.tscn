@@ -53,6 +53,10 @@ linked_bridge = NodePath("../SouthBridge")
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9, 0, 13)
 linked_bridge = NodePath("../NorthBridge")
 
+[node name="PlayerSpawner" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 7)
+
 [editable path="EastBridge"]
 [editable path="WestBridge"]
 [editable path="NorthBridge"]

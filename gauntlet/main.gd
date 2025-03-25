@@ -3,7 +3,26 @@ extends Node3D
 
 @onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player = %Player
+@onready var player_spawner = %PlayerSpawner
 
+var current_frame = 0
+
+func _physics_process(delta: float) -> void:
+	current_frame += 1
+	# Log.info(str(current_frame))
+	if current_frame > 300:
+		# player_reset()
+		player.position = player_spawner.global_position
+		var bullets = get_tree().get_nodes_in_group("bullets")
+		for bullet in bullets:
+			bullet.queue_free()
+		# badguy_reset()
+		var badguys = get_tree().get_nodes_in_group("badguys")
+		for badguy in badguys:
+			badguy.queue_free()
+		# etc.
+		current_frame = 0
+	
 
 func _ready() -> void:
 	player.shoot.connect(_on_player_shoot)
@@ -21,6 +40,7 @@ func _ready() -> void:
 func _on_player_shoot(
 		bullet_template: PackedScene, rotation: Vector3, location: Vector3):
 	var bullet = bullet_template.instantiate()
+	bullet.add_to_group("bullets")
 	add_child(bullet)
 	bullet.rotation = rotation
 	bullet.position = location
