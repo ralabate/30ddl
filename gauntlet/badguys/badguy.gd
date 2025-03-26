@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var navigation_timer: Timer = %NavigationTimer
+@onready var player_damage_area: Area3D = %PlayerDamageArea
+@onready var health_component: HealthComponent = %HealthComponent
 
 var target: Node3D
 var movement_speed: float = 0.5
@@ -17,6 +19,8 @@ func _ready():
 	navigation_agent.target_desired_distance = 0.5
 	
 	navigation_timer.timeout.connect(_on_navtimer_timeout)
+	player_damage_area.body_entered.connect(_on_body_entered_dmg_area)
+	health_component.death.connect(_on_death)
 
 
 func _physics_process(delta):
@@ -38,4 +42,17 @@ func update_movement_target(movement_target: Vector3):
 
 
 func _on_navtimer_timeout() -> void:
-	update_movement_target(target.global_position)
+	if target != null:
+		update_movement_target(target.global_position)
+
+
+func _on_body_entered_dmg_area(body: Node3D) -> void:
+	if body.has_node("HealthComponent"):
+		var health_component = body.get_node("HealthComponent") as HealthComponent
+		health_component.damage(1)
+		
+		Log.info("Player took damage!")
+
+
+func _on_death() -> void:
+	queue_free()

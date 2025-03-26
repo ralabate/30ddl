@@ -1,14 +1,17 @@
 extends CharacterBody3D
+class_name Player
 
 
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: PackedScene, location: Vector3)
 signal decoy_spawned(decoy: PackedScene, location: Vector3)
+signal death
 
 @export var SPEED = 2.5
 @export var TIME_BETWEEN_SHOTS = 1
 
 @onready var animation_player = %AnimatedMesh/AnimationPlayer
+@onready var health_component = %HealthComponent
 
 var bullet_template = preload("res://player/bullet.tscn")
 var mine_template = preload("res://player/mine.tscn")
@@ -25,6 +28,9 @@ func _ready() -> void:
 	shot_timer.autostart = false
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	add_child(shot_timer)
+
+	health_component.death.connect(_on_death)
+
 	animation_player.play("lizardprince_idle")
 
 
@@ -72,3 +78,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_shot_timer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_death() -> void:
+	death.emit()
+	queue_free()

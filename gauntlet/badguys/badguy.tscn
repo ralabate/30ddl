@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dysqmwq3wem2k"]
+[gd_scene load_steps=6 format=3 uid="uid://dysqmwq3wem2k"]
 
 [ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_apgvv"]
 [ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://badguys/imported/bad_lizard_idle.glb" id="1_lf2yb"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_0b8a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_221m0"]
 
 [node name="Badguy" type="CharacterBody3D"]
 collision_layer = 4
@@ -29,8 +31,18 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_0b8a1")
 MAX_HEALTH = 5
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
+
+[node name="PlayerDamageArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498822, -0.220448)
+shape = SubResource("SphereShape3D_221m0")
 
 [editable path="AnimatedMesh"]

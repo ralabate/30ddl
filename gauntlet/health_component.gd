@@ -17,4 +17,3 @@ func damage(amount: int):
 	
 	if current_health <= 0:
 		death.emit()
-		get_parent().queue_free()
