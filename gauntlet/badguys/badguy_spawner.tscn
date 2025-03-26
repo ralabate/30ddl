@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="2_5vgoc"]
 [ext_resource type="PackedScene" uid="uid://dgvjlbbo4hmtw" path="res://badguys/imported/badguy_spawner.glb" id="3_od4cw"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_od4cw"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvvxq"]
+size = Vector3(2, 2, 2)
 
 [node name="BadguySpawner" type="StaticBody3D"]
 collision_layer = 8
@@ -17,11 +18,12 @@ wait_time = 4.0
 autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_od4cw")
+shape = SubResource("BoxShape3D_hvvxq")
 
 [node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_5vgoc")
-MAX_HEALTH = 10
+MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
 [node name="badguy_spawner" parent="." instance=ExtResource("3_od4cw")]

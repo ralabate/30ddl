@@ -3,23 +3,24 @@ extends Node3D
 
 @onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player_template = preload("res://player/player.tscn")
+@onready var spawner_template = preload("res://badguys/badguy_spawner.tscn")
 @onready var player_spawner = %PlayerSpawner
 
 var player: Player
+var spawner_count: int
 
 
 func _ready() -> void:
-	spawn_player()
-
-	var badguy_spawners = get_tree().get_nodes_in_group("spawners")
-	for spawner in badguy_spawners:
-		spawner.spawned_badguy.connect(_on_spawned_badguy)
-	
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 
+	start_game()
+
 
 func spawn_player() -> void:
+	if player != null and not player.is_queued_for_deletion():
+		player.queue_free()
+
 	player = player_template.instantiate()
 	add_child(player)
 	player.position = player_spawner.position
@@ -28,6 +29,27 @@ func spawn_player() -> void:
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
 	player.death.connect(_on_player_died)
+
+
+func start_game() -> void:
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	for bullet in bullets:
+		bullet.queue_free()
+	
+	var badguys = get_tree().get_nodes_in_group("badguys")
+	for badguy in badguys:
+		badguy.queue_free()
+		
+	var spawner_spawners = get_tree().get_nodes_in_group("spawner_spawners")
+	for spawner_spawner in spawner_spawners:
+		var spawner = spawner_template.instantiate()
+		add_child(spawner)
+		spawner.position = spawner_spawner.position
+		spawner.spawned_badguy.connect(_on_spawned_badguy)
+		spawner.death.connect(_on_spawner_died)
+		spawner_count += 1
+
+		spawn_player()
 
 
 func _on_player_shoot(
@@ -60,16 +82,7 @@ func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
 
 
 func _on_player_died() -> void:
-	# player_reset()
-	spawn_player()
-
-	var bullets = get_tree().get_nodes_in_group("bullets")
-	for bullet in bullets:
-		bullet.queue_free()
-	# badguy_reset()
-	var badguys = get_tree().get_nodes_in_group("badguys")
-	for badguy in badguys:
-		badguy.queue_free()
+	start_game()
 
 
 func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
@@ -86,3 +99,9 @@ func _on_spawned_badguy(position: Vector3) -> void:
 		add_child(badguy)
 		badguy.target = player
 		badguy.position = position
+
+
+func _on_spawner_died() -> void:
+	spawner_count -= 1
+	if spawner_count <= 0:
+		start_game()
