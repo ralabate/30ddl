@@ -23,7 +23,7 @@ shape = SubResource("BoxShape3D_hvvxq")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_5vgoc")
-MAX_HEALTH = 1
+MAX_HEALTH = 100
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
 [node name="badguy_spawner" parent="." instance=ExtResource("3_od4cw")]
