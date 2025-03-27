@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwl2b12apn8uh"]
+[gd_scene load_steps=6 format=3 uid="uid://bwl2b12apn8uh"]
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://b8lrhgxp8l2x" path="res://player/imported/lizardprince_idle.glb" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://d1700w1hqtitw" path="res://player/imported/lizardprince_attack.glb" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -14,7 +15,7 @@ script = ExtResource("1_4flbx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh265")
 
-[node name="AnimatedMesh" parent="." instance=ExtResource("2_rkbax")]
+[node name="lizardprince_idle" parent="." instance=ExtResource("2_rkbax")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
@@ -23,3 +24,7 @@ unique_name_in_owner = true
 script = ExtResource("3_g1dw6")
 MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
+
+[node name="lizardprince_attack" parent="." instance=ExtResource("4_yw30f")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)

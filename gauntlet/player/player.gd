@@ -8,9 +8,10 @@ signal decoy_spawned(decoy: PackedScene, location: Vector3)
 signal death
 
 @export var SPEED = 2.5
-@export var TIME_BETWEEN_SHOTS = 1
+@export var TIME_BETWEEN_SHOTS = 0.1
 
-@onready var animation_player = %AnimatedMesh/AnimationPlayer
+@onready var lizardprince_idle = %lizardprince_idle
+@onready var lizardprince_attack = %lizardprince_attack
 @onready var health_component = %HealthComponent
 
 var bullet_template = preload("res://player/bullet.tscn")
@@ -31,7 +32,8 @@ func _ready() -> void:
 
 	health_component.death.connect(_on_death)
 
-	animation_player.play("lizardprince_idle")
+	lizardprince_idle.get_node("AnimationPlayer").play("lizardprince_idle")
+	lizardprince_attack.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -44,6 +46,9 @@ func _physics_process(delta: float) -> void:
 			)
 		can_shoot = false
 		shot_timer.start()
+		lizardprince_attack.show()
+		lizardprince_attack.get_node("AnimationPlayer").play("lizardprince_attack")
+		lizardprince_idle.hide()
 
 	# Mines
 	if Input.is_action_just_pressed("player_mine"):
