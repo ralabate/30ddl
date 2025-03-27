@@ -29,6 +29,7 @@ func spawn_player() -> void:
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
 	player.death.connect(_on_player_died)
+	player.done_winning.connect(_on_player_done_winning)
 
 
 func spawn_badguy(position: Vector3) -> void:
@@ -98,6 +99,10 @@ func _on_player_died() -> void:
 	start_game()
 
 
+func _on_player_done_winning() -> void:
+	start_game()
+
+
 func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
 	# Reset their target to the player
 	for affected in affected_list:
@@ -114,4 +119,4 @@ func _on_spawned_badguy(position: Vector3) -> void:
 func _on_spawner_died() -> void:
 	spawner_count -= 1
 	if spawner_count <= 0:
-		start_game()
+		player.win()

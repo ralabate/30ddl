@@ -6,12 +6,14 @@ signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: PackedScene, location: Vector3)
 signal decoy_spawned(decoy: PackedScene, location: Vector3)
 signal death
+signal done_winning
 
 @export var SPEED = 2.5
 @export var TIME_BETWEEN_SHOTS = 1
 
 @onready var lizardprince_idle = %lizardprince_idle
 @onready var lizardprince_attack = %lizardprince_attack
+@onready var lizardprince_win = %lizardprince_win
 @onready var health_component = %HealthComponent
 
 var bullet_template = preload("res://player/bullet.tscn")
@@ -34,7 +36,7 @@ func _ready() -> void:
 
 	health_component.death.connect(_on_death)
 
-	lizardprince_idle.get_node("AnimationPlayer").play("lizardprince_idle")
+	play_animation(lizardprince_idle)
 	lizardprince_attack.hide()
 
 
@@ -48,9 +50,7 @@ func _physics_process(delta: float) -> void:
 			)
 		can_shoot = false
 		shot_timer.start()
-		lizardprince_attack.show()
-		lizardprince_attack.get_node("AnimationPlayer").play("lizardprince_attack")
-		lizardprince_idle.hide()
+		play_animation(lizardprince_attack)
 
 	# Mines
 	if Input.is_action_just_pressed("player_mine"):
@@ -83,8 +83,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func set_firing_rate(rate: float):
+func set_firing_rate(rate: float) -> void:
 	shot_timer.wait_time = TIME_BETWEEN_SHOTS * rate
+
+
+func play_animation(anim: Node3D) -> void:
+	lizardprince_attack.hide()
+	lizardprince_idle.hide()
+	lizardprince_win.hide()
+	
+	# This should work if we keep consistent naming
+	anim.show()
+	anim.get_node("AnimationPlayer").play(anim.name)
+
+
+func win() -> void:
+	play_animation(lizardprince_win)
+	var animation_player = lizardprince_win.get_node("AnimationPlayer") as AnimationPlayer
+	await animation_player.animation_finished
+	done_winning.emit()
 
 
 func _on_shot_timer_timeout() -> void:

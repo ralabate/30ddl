@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwl2b12apn8uh"]
+[gd_scene load_steps=7 format=3 uid="uid://bwl2b12apn8uh"]
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://b8lrhgxp8l2x" path="res://player/imported/lizardprince_idle.glb" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://j46pen4qekfx" path="res://player/imported/lizardprince_win.glb" id="4_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://d1700w1hqtitw" path="res://player/imported/lizardprince_attack.glb" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
@@ -19,12 +20,34 @@ shape = SubResource("CapsuleShape3D_sh265")
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
+[node name="lizardprince_attack" parent="." instance=ExtResource("4_yw30f")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="lizardprince_win" parent="." instance=ExtResource("4_qjkh3")]
+unique_name_in_owner = true
+
+[node name="Skeleton3D" parent="lizardprince_win" index="0"]
+bones/1/position = Vector3(0.157638, 0.419169, -0.0796318)
+bones/1/rotation = Quaternion(0.707062, -5.72052e-05, 2.91733e-05, 0.707151)
+bones/3/position = Vector3(4.10657e-16, 3.30767e-12, 0.805838)
+bones/3/rotation = Quaternion(0.499943, 0.500057, 0.499881, 0.500119)
+bones/7/rotation = Quaternion(0.547515, 1.65361e-07, 1.08196e-07, 0.836796)
+bones/9/rotation = Quaternion(0.986005, -0.0704354, 0.0736833, 0.131927)
+bones/12/rotation = Quaternion(-0.140016, 0.0568511, -0.0518254, 0.987156)
+bones/16/rotation = Quaternion(0.682375, 0.0192516, 0.0166135, 0.73056)
+bones/17/rotation = Quaternion(0.07778, -0.00707843, -0.00063091, 0.996945)
+bones/18/rotation = Quaternion(-0.440039, -0.0214171, 0.0108342, 0.897658)
+bones/19/rotation = Quaternion(-0.272795, 0.0124366, -0.00365664, 0.961985)
+bones/21/rotation = Quaternion(-0.73056, 0.0166135, -0.0192516, 0.682375)
+bones/22/rotation = Quaternion(0.0777799, -0.00707843, -0.000630911, 0.996945)
+bones/23/rotation = Quaternion(-0.440039, -0.0214171, 0.0108342, 0.897658)
+bones/24/rotation = Quaternion(-0.272795, 0.0124366, -0.00365664, 0.961985)
+
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_g1dw6")
 MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
-[node name="lizardprince_attack" parent="." instance=ExtResource("4_yw30f")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+[editable path="lizardprince_win"]
