@@ -18,10 +18,18 @@ func _ready() -> void:
 
 func _on_body_entered(node: Node3D) -> void:
 	damage_list.append(node)
+	
+	if node.is_in_group("player"):
+		var player = node as Player
+		player.set_firing_rate(0.1)
 
 
 func _on_body_exited(node: Node3D) -> void:
 	damage_list.erase(node)
+
+	if node.is_in_group("player"):
+		var player = node as Player
+		player.set_firing_rate(1)
 
 
 func _on_timer_timeout() -> void:

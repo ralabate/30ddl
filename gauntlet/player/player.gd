@@ -8,7 +8,7 @@ signal decoy_spawned(decoy: PackedScene, location: Vector3)
 signal death
 
 @export var SPEED = 2.5
-@export var TIME_BETWEEN_SHOTS = 0.1
+@export var TIME_BETWEEN_SHOTS = 1
 
 @onready var lizardprince_idle = %lizardprince_idle
 @onready var lizardprince_attack = %lizardprince_attack
@@ -23,6 +23,8 @@ var shot_timer: Timer
 
 
 func _ready() -> void:
+	add_to_group("player")
+
 	shot_timer = Timer.new()
 	shot_timer.one_shot = true
 	shot_timer.wait_time = TIME_BETWEEN_SHOTS
@@ -79,6 +81,10 @@ func _physics_process(delta: float) -> void:
 
 	# Do it
 	move_and_slide()
+
+
+func set_firing_rate(rate: float):
+	shot_timer.wait_time = TIME_BETWEEN_SHOTS * rate
 
 
 func _on_shot_timer_timeout() -> void:

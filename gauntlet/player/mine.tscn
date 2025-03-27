@@ -37,7 +37,7 @@ size = Vector2(0.2, 0.2)
 
 [node name="Mine" type="Area3D"]
 collision_layer = 2
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_iuis7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
