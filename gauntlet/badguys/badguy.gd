@@ -25,6 +25,8 @@ func _ready():
 	player_damage_area.body_entered.connect(_on_body_entered_dmg_area)
 	health_component.damage_received.connect(_on_damage_received)
 	health_component.death.connect(_on_death)
+	
+	animated_mesh.get_node("AnimationPlayer").play("blueguy_idle")
 
 
 func _physics_process(delta):
