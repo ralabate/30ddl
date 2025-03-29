@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dysqmwq3wem2k"]
+[gd_scene load_steps=7 format=3 uid="uid://dysqmwq3wem2k"]
 
 [ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_apgvv"]
 [ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://badguys/imported/bad_lizard_idle.glb" id="1_lf2yb"]
+[ext_resource type="Material" uid="uid://ci70lplv4aah0" path="res://badguys/damage_overlay.tres" id="2_nnro2"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_0b8a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
@@ -14,6 +15,7 @@ radius = 0.3
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_apgvv")
+damage_overlay = ExtResource("2_nnro2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_apgvv")
