@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dysqmwq3wem2k"]
 
 [ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_apgvv"]
-[ext_resource type="PackedScene" uid="uid://qo85vi3b3odi" path="res://badguys/imported/bad_lizard_idle.glb" id="1_lf2yb"]
 [ext_resource type="Material" uid="uid://ci70lplv4aah0" path="res://badguys/damage_overlay.tres" id="2_nnro2"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_0b8a1"]
+[ext_resource type="PackedScene" uid="uid://c61wgtl0klu3x" path="res://badguys/imported/blueguy_idle.glb" id="4_nnro2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
 radius = 0.25
@@ -19,13 +19,6 @@ damage_overlay = ExtResource("2_nnro2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_apgvv")
-
-[node name="AnimatedMesh" parent="." instance=ExtResource("1_lf2yb")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
-
-[node name="Mesh" parent="AnimatedMesh/Skeleton3D" index="0"]
-layers = 2
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
@@ -48,4 +41,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
 shape = SubResource("SphereShape3D_221m0")
 
-[editable path="AnimatedMesh"]
+[node name="AnimatedMesh" parent="." instance=ExtResource("4_nnro2")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0, -1, 0)

@@ -1,11 +1,13 @@
 extends CharacterBody3D
 
+
 @export var damage_overlay: ShaderMaterial
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var navigation_timer: Timer = %NavigationTimer
 @onready var player_damage_area: Area3D = %PlayerDamageArea
 @onready var health_component: HealthComponent = %HealthComponent
+@onready var animated_mesh = %AnimatedMesh
 
 var target: Node3D
 var movement_speed: float = 0.5
@@ -44,7 +46,7 @@ func update_movement_target(movement_target: Vector3):
 
 
 func toggle_damage_overlay(on: bool) -> void:
-	var mesh = %AnimatedMesh.get_node("Skeleton3D/Mesh") as MeshInstance3D
+	var mesh = animated_mesh.get_node("Skeleton3D/Mesh") as MeshInstance3D
 	if mesh != null:
 		mesh.material_overlay = damage_overlay if on else null
 
