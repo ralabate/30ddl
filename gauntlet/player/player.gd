@@ -5,16 +5,21 @@ class_name Player
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: PackedScene, location: Vector3)
 signal decoy_spawned(decoy: PackedScene, location: Vector3)
+signal phasing_activated
 signal death
 signal done_winning
 
 @export var SPEED = 2.5
 @export var TIME_BETWEEN_SHOTS = 1
 
+@export var invisibility_material: StandardMaterial3D
+
 @onready var lizardprince_idle = %lizardprince_idle
 @onready var lizardprince_attack = %lizardprince_attack
 @onready var lizardprince_win = %lizardprince_win
+
 @onready var health_component = %HealthComponent
+@onready var invisibility_timer = %InvisibilityTimer
 
 var bullet_template = preload("res://player/bullet.tscn")
 var mine_template = preload("res://player/mine.tscn")
@@ -22,6 +27,7 @@ var decoy_template = preload("res://player/decoy.tscn")
 
 var can_shoot = true
 var shot_timer: Timer
+var current_animated_mesh: Node3D
 
 
 func _ready() -> void:
@@ -33,11 +39,11 @@ func _ready() -> void:
 	shot_timer.autostart = false
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	add_child(shot_timer)
-
+	
+	invisibility_timer.timeout.connect(_on_invisibility_timer_timeout)
 	health_component.death.connect(_on_death)
 
 	play_animation(lizardprince_idle)
-	lizardprince_attack.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -59,6 +65,11 @@ func _physics_process(delta: float) -> void:
 	# Player decoys
 	if Input.is_action_just_pressed("player_decoy"):
 		decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
+		
+	if Input.is_action_just_pressed("player_phase"):
+		self.set_collision_mask_value(1, false)
+		toggle_invisibility_material(true)
+		invisibility_timer.start()
 
 	# Gravity
 	if not is_on_floor():
@@ -95,6 +106,14 @@ func play_animation(anim: Node3D) -> void:
 	# This should work if we keep consistent naming
 	anim.show()
 	anim.get_node("AnimationPlayer").play(anim.name)
+	
+	current_animated_mesh = anim
+
+
+func toggle_invisibility_material(on: bool) -> void:
+	var mesh = current_animated_mesh.get_node("Skeleton3D/Mesh") as MeshInstance3D
+	if mesh != null:
+		mesh.material_override = invisibility_material if on else null
 
 
 func win() -> void:
@@ -106,6 +125,11 @@ func win() -> void:
 
 func _on_shot_timer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_invisibility_timer_timeout() -> void:
+	self.set_collision_mask_value(1, true)
+	toggle_invisibility_material(false)
 
 
 func _on_death() -> void:

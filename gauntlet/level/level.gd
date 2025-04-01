@@ -32,6 +32,7 @@ func spawn_player() -> void:
 	player.shoot.connect(_on_player_shoot)
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
+	player.phasing_activated.connect(_on_player_activated_phasing)
 	player.death.connect(_on_player_died)
 	player.done_winning.connect(_on_player_done_winning)
 
@@ -99,6 +100,10 @@ func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
 	decoy.done.connect(_on_decoy_is_done)
 	add_child(decoy)
 	decoy.position = location
+
+
+func _on_player_activated_phasing() -> void:
+	pass
 
 
 func _on_player_died() -> void:

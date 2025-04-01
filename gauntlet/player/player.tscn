@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwl2b12apn8uh"]
+[gd_scene load_steps=8 format=3 uid="uid://bwl2b12apn8uh"]
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="Material" uid="uid://dsnj5agftxsoj" path="res://player/invisibility_override.tres" id="2_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://b8lrhgxp8l2x" path="res://player/imported/lizardprince_idle.glb" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://common/health_component.gd" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://j46pen4qekfx" path="res://player/imported/lizardprince_win.glb" id="4_qjkh3"]
@@ -10,8 +11,9 @@
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 script = ExtResource("1_4flbx")
+invisibility_material = ExtResource("2_g6k8r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh265")
@@ -49,5 +51,10 @@ unique_name_in_owner = true
 script = ExtResource("3_g1dw6")
 MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
+
+[node name="InvisibilityTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
 
 [editable path="lizardprince_win"]
