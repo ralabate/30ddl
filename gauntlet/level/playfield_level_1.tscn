@@ -9,7 +9,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.5
 agent_height = 2.0
 
-[node name="ModularLevel" type="NavigationRegion3D"]
+[node name="PlayfieldLevel1" type="NavigationRegion3D"]
 navigation_mesh = SubResource("NavigationMesh_qc7lj")
 
 [node name="wall6" parent="." instance=ExtResource("2_35a4x")]
