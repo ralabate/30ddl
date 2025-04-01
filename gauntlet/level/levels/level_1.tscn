@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://clsdp2e4yqkji"]
 
-[ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://level.gd" id="1_hn12h"]
-[ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://level/playfield_level_1.tscn" id="2_ihfcg"]
-[ext_resource type="PackedScene" uid="uid://cis78mxrxyjlq" path="res://level/bridge.tscn" id="3_rka8t"]
+[ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://level/level.gd" id="1_35gx7"]
+[ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://level/levels/playfield_1.tscn" id="2_wg4fv"]
+[ext_resource type="PackedScene" uid="uid://cis78mxrxyjlq" path="res://level/bridge.tscn" id="3_hosfi"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
@@ -10,28 +10,28 @@ ambient_light_source = 2
 ambient_light_color = Color(0.950226, 0.908877, 0.874709, 1)
 
 [node name="Level1" type="Node3D"]
-script = ExtResource("1_hn12h")
+script = ExtResource("1_35gx7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 51.2774, 52.0472)
 environment = SubResource("Environment_h2yge")
 fov = 15.0
 
-[node name="ModularLevel" parent="." instance=ExtResource("2_ihfcg")]
+[node name="ModularLevel" parent="." instance=ExtResource("2_wg4fv")]
 
-[node name="EastBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_rka8t")]
+[node name="EastBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_hosfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 5)
 linked_bridge = NodePath("../WestBridge")
 
-[node name="WestBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_rka8t")]
+[node name="WestBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_hosfi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0, -7)
 linked_bridge = NodePath("../EastBridge")
 
-[node name="NorthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_rka8t")]
+[node name="NorthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_hosfi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -13)
 linked_bridge = NodePath("../SouthBridge")
 
-[node name="SouthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_rka8t")]
+[node name="SouthBridge" parent="." node_paths=PackedStringArray("linked_bridge") instance=ExtResource("3_hosfi")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9, 0, 13)
 linked_bridge = NodePath("../NorthBridge")
 

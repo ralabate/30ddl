@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_apgvv"]
 [ext_resource type="Material" uid="uid://ci70lplv4aah0" path="res://badguys/damage_overlay.tres" id="2_nnro2"]
-[ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_0b8a1"]
+[ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://common/health_component.gd" id="3_0b8a1"]
 [ext_resource type="PackedScene" uid="uid://c61wgtl0klu3x" path="res://badguys/imported/blueguy_idle.glb" id="4_nnro2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]

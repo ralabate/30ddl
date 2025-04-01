@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce84xhnoym281"]
 
-[ext_resource type="PackedScene" uid="uid://ct4ym68qe3wd" path="res://level/level_assets/wall.tscn" id="2_4ohyl"]
-[ext_resource type="PackedScene" uid="uid://c3r2x4mms7d0u" path="res://level/level_assets/floor.tscn" id="2_qj3d6"]
+[ext_resource type="PackedScene" uid="uid://ct4ym68qe3wd" path="res://level/modular_assets/wall.tscn" id="2_4ohyl"]
+[ext_resource type="PackedScene" uid="uid://c3r2x4mms7d0u" path="res://level/modular_assets/floor.tscn" id="2_qj3d6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qc7lj"]
 vertices = PackedVector3Array(-14.5, 1, -0.25, -9, 1, -0.25, -9, 1, -2.25, -7.75, 1, -2.5, -7.75, 1, -9.5, -14.5, 1, -9.5, 8, 1, 9.5, 8, 1, 2.75, 7, 1, 2.5, -6.75, 1, -2.25, -6.75, 1, 9.5, 7, 1, -9.5, 9.25, 1, 0.75, 14.5, 1, 1, 14.5, 1, -9.5, 9.25, 1, -9.5, -14.5, 1, 9.5, -9, 1, 9.5, 9.25, 1, 2.25, 14.5, 1, 9.5)

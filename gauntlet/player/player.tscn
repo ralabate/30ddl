@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://b8lrhgxp8l2x" path="res://player/imported/lizardprince_idle.glb" id="2_rkbax"]
-[ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://health_component.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://common/health_component.gd" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://j46pen4qekfx" path="res://player/imported/lizardprince_win.glb" id="4_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://d1700w1hqtitw" path="res://player/imported/lizardprince_attack.glb" id="4_yw30f"]
 

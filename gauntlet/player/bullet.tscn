@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddrgx7hx1ypm1"]
 
 [ext_resource type="Script" uid="uid://dfy13ftmrsh8" path="res://player/bullet.gd" id="1_v7oki"]
-[ext_resource type="Material" uid="uid://b2v0s2d4kg2vs" path="res://bullet_material.tres" id="2_v8qja"]
+[ext_resource type="Material" uid="uid://b2v0s2d4kg2vs" path="res://player/bullet_material.tres" id="2_v8qja"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_v8qja"]
 material = ExtResource("2_v8qja")

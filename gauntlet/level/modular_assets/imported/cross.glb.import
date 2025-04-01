@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccmtk8uklp2km"
-path="res://.godot/imported/corner.glb-542d5eab1c49fcbf2c53756406d73a25.scn"
+uid="uid://b8awa1md4dbt6"
+path="res://.godot/imported/cross.glb-072c49be870375f09f7f9d68b932f1c5.scn"
 
 [deps]
 
-source_file="res://level/level_assets/imported/corner.glb"
-dest_files=["res://.godot/imported/corner.glb-542d5eab1c49fcbf2c53756406d73a25.scn"]
+source_file="res://level/modular_assets/imported/cross.glb"
+dest_files=["res://.godot/imported/cross.glb-072c49be870375f09f7f9d68b932f1c5.scn"]
 
 [params]
 

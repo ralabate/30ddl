@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bga5btisymw7b"
-path="res://.godot/imported/tjunction.glb-65153d7cbcaa05fa30c5d71953033edd.scn"
+uid="uid://ccmtk8uklp2km"
+path="res://.godot/imported/corner.glb-667d23e1fff30f03096b7d2a0d63b637.scn"
 
 [deps]
 
-source_file="res://level/level_assets/imported/tjunction.glb"
-dest_files=["res://.godot/imported/tjunction.glb-65153d7cbcaa05fa30c5d71953033edd.scn"]
+source_file="res://level/modular_assets/imported/corner.glb"
+dest_files=["res://.godot/imported/corner.glb-667d23e1fff30f03096b7d2a0d63b637.scn"]
 
 [params]
 

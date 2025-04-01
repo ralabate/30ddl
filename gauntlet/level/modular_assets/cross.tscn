@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wpa7ca502hg0"]
 
-[ext_resource type="PackedScene" uid="uid://b8awa1md4dbt6" path="res://level/level_assets/imported/cross.glb" id="1_m6dvx"]
+[ext_resource type="PackedScene" uid="uid://b8awa1md4dbt6" path="res://level/modular_assets/imported/cross.glb" id="1_m6dvx"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r61cq"]
 points = PackedVector3Array(2, 2, 0.5, 2, 2, -0.5, 1, 2, 1, 2, 0, 0.5, 2, 0, -0.5, 1, 2, -1, 1, 0, 1, -1, 2, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -2, 2, 0.5, -1, 0, -1, -2, 2, -0.5, -2, 0, 0.5, -2, 0, -0.5)

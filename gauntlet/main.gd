@@ -2,8 +2,8 @@ extends Node3D
 
 
 var levels = [
-	preload("res://level_0.tscn"),
-	preload("res://level_1.tscn"),
+	preload("res://level/levels/level_0.tscn"),
+	preload("res://level/levels/level_1.tscn"),
 ]
 
 

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ci70lplv4aah0"]
 
-[ext_resource type="Shader" uid="uid://c1fhsbrt1c2ar" path="res://damage_flash.gdshader" id="1_fxsh3"]
+[ext_resource type="Shader" uid="uid://c1fhsbrt1c2ar" path="res://vfx/damage_flash.gdshader" id="1_fxsh3"]
 
 [resource]
 render_priority = 0
