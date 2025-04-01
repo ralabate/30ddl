@@ -1,5 +1,9 @@
 extends Node3D
+class_name Level
 
+
+signal player_won
+signal player_lost
 
 @onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player_template = preload("res://player/player.tscn")
@@ -25,7 +29,6 @@ func spawn_player() -> void:
 	player = player_template.instantiate()
 	add_child(player)
 	player.position = player_spawner.global_position
-	
 	player.shoot.connect(_on_player_shoot)
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
@@ -41,18 +44,6 @@ func spawn_badguy(position: Vector3) -> void:
 
 
 func start_game() -> void:
-	var bullets = get_tree().get_nodes_in_group("bullets")
-	for bullet in bullets:
-		bullet.queue_free()
-
-	var badguys = get_tree().get_nodes_in_group("badguys")
-	for badguy in badguys:
-		badguy.queue_free()
-
-	var spawners = get_tree().get_nodes_in_group("spawners")
-	for spawner in spawners:
-		spawner.queue_free()
-
 	spawn_player()
 
 	var spawner_spawners = get_tree().get_nodes_in_group("spawner_spawners")
@@ -65,6 +56,20 @@ func start_game() -> void:
 		spawner_count += 1
 
 		spawn_badguy(spawner.position)
+
+
+func clean_up() -> void:
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	for bullet in bullets:
+		bullet.queue_free()
+
+	var badguys = get_tree().get_nodes_in_group("badguys")
+	for badguy in badguys:
+		badguy.queue_free()
+
+	var spawners = get_tree().get_nodes_in_group("spawners")
+	for spawner in spawners:
+		spawner.queue_free()
 
 
 func _on_player_shoot(
@@ -97,11 +102,11 @@ func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
 
 
 func _on_player_died() -> void:
-	start_game()
+	player_lost.emit()
 
 
 func _on_player_done_winning() -> void:
-	start_game()
+	player_won.emit()
 
 
 func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
