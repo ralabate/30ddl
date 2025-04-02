@@ -10,7 +10,7 @@ signal death
 signal done_winning
 
 @export var SPEED = 2.5
-@export var TIME_BETWEEN_SHOTS = 1
+@export var TIME_BETWEEN_SHOTS = 0.5
 
 @export var invisibility_material: StandardMaterial3D
 
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		shoot.emit(
 				bullet_template,
 				rotation,
-				transform.origin - transform.basis.z
+				transform.origin + transform.basis.z * 0.2
 			)
 		can_shoot = false
 		shot_timer.start()

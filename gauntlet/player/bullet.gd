@@ -1,7 +1,7 @@
 extends Area3D
 
 
-@export var SPEED = 5
+@export var SPEED = 2.5
 @export var DAMAGE = 1
 
 
