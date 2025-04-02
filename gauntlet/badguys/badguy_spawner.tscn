@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvvxq"]
 size = Vector3(2, 2, 2)
 
-[node name="BadguySpawner" type="StaticBody3D"]
+[node name="BadguySpawner" type="StaticBody3D" groups=["spawners"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_irkoj")

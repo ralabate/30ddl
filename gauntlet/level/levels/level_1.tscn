@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://clsdp2e4yqkji"]
+[gd_scene load_steps=7 format=3 uid="uid://clsdp2e4yqkji"]
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://level/level.gd" id="1_35gx7"]
 [ext_resource type="PackedScene" uid="uid://c4hm3jsxo7vky" path="res://level/levels/playfield_1.tscn" id="2_wg4fv"]
 [ext_resource type="PackedScene" uid="uid://cis78mxrxyjlq" path="res://level/bridge.tscn" id="3_hosfi"]
+[ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguys/badguy_spawner.tscn" id="4_hosfi"]
+[ext_resource type="PackedScene" uid="uid://dysqmwq3wem2k" path="res://badguys/badguy.tscn" id="5_eq12i"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
@@ -39,11 +41,22 @@ linked_bridge = NodePath("../NorthBridge")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="SpawnerSpawner" type="Marker3D" parent="." groups=["spawner_spawners"]]
+[node name="BadguySpawner" parent="." instance=ExtResource("4_hosfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -7)
+badguy_template = ExtResource("5_eq12i")
 
-[node name="SpawnerSpawner2" type="Marker3D" parent="." groups=["spawner_spawners"]]
+[node name="BadguySpawner2" parent="." instance=ExtResource("4_hosfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 7)
+badguy_template = ExtResource("5_eq12i")
+
+[node name="Badguy" parent="." instance=ExtResource("5_eq12i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -2)
+
+[node name="Badguy2" parent="." instance=ExtResource("5_eq12i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 8)
+
+[node name="Badguy3" parent="." instance=ExtResource("5_eq12i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
 
 [editable path="EastBridge"]
 [editable path="WestBridge"]

@@ -39,7 +39,7 @@ func _ready() -> void:
 	shot_timer.autostart = false
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	add_child(shot_timer)
-	
+
 	phasing_timer.timeout.connect(_on_phasing_timer_timeout)
 	health_component.death.connect(_on_death)
 

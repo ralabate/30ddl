@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bugwiltjmg52c"]
+
+[ext_resource type="Script" uid="uid://clhircl18kdhh" path="res://badguys/badguy.gd" id="1_qpwri"]
+[ext_resource type="Material" uid="uid://ci70lplv4aah0" path="res://badguys/damage_overlay.tres" id="2_frc6e"]
+[ext_resource type="Script" uid="uid://bund4vdf4u4yo" path="res://common/health_component.gd" id="3_becgi"]
+[ext_resource type="PackedScene" uid="uid://ctdi8njhskigp" path="res://badguys/imported/orangeguy_idle.glb" id="4_qpwri"]
+[ext_resource type="Script" uid="uid://b72gu3rundnc0" path="res://common/auto_fire_component.gd" id="5_frc6e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgvv"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_221m0"]
+radius = 0.3
+
+[node name="OrangeBadguy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_qpwri")
+damage_overlay = ExtResource("2_frc6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_apgvv")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+
+[node name="NavigationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_becgi")
+MAX_HEALTH = 5
+metadata/_custom_type_script = "uid://bund4vdf4u4yo"
+
+[node name="PlayerDamageArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
+shape = SubResource("SphereShape3D_221m0")
+
+[node name="AnimatedMesh" parent="." instance=ExtResource("4_qpwri")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="AutofireComponent" type="Node" parent="."]
+script = ExtResource("5_frc6e")
+metadata/_custom_type_script = "uid://b72gu3rundnc0"

@@ -26,7 +26,7 @@ func _ready():
 	health_component.damage_received.connect(_on_damage_received)
 	health_component.death.connect(_on_death)
 	
-	animated_mesh.get_node("AnimationPlayer").play("blueguy_idle")
+	#animated_mesh.get_node("AnimationPlayer").play("blueguy_idle")
 
 
 func _physics_process(delta):

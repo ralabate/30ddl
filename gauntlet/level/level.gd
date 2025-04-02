@@ -37,26 +37,18 @@ func spawn_player() -> void:
 	player.done_winning.connect(_on_player_done_winning)
 
 
-func spawn_badguy(position: Vector3) -> void:
-	var badguy = badguy_template.instantiate()
-	add_child(badguy)
-	badguy.target = player
-	badguy.position = position
-
-
 func start_game() -> void:
 	spawn_player()
 
-	var spawner_spawners = get_tree().get_nodes_in_group("spawner_spawners")
-	for spawner_spawner in spawner_spawners:
-		var spawner = spawner_template.instantiate()
-		add_child(spawner)
-		spawner.position = spawner_spawner.position
+	var spawners = get_tree().get_nodes_in_group("spawners")
+	for spawner in spawners:
 		spawner.spawned_badguy.connect(_on_spawned_badguy)
 		spawner.death.connect(_on_spawner_died)
 		spawner_count += 1
-
-		spawn_badguy(spawner.position)
+		
+	var badguys = get_tree().get_nodes_in_group("badguys")
+	for badguy in badguys:
+		badguy.target = player
 
 
 func clean_up() -> void:
@@ -127,9 +119,11 @@ func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
 			affected.target = player
 
 
-func _on_spawned_badguy(position: Vector3) -> void:
+func _on_spawned_badguy(badguy: Node3D, position: Vector3) -> void:
 	if player != null and not player.is_queued_for_deletion():
-		spawn_badguy(position)
+		add_child(badguy)
+		badguy.target = player
+		badguy.position = position
 
 
 func _on_spawner_died() -> void:

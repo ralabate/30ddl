@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccha1k3c1jk0d"]
+
+[ext_resource type="Script" uid="uid://dfy13ftmrsh8" path="res://player/bullet.gd" id="1_wi5qy"]
+[ext_resource type="Material" uid="uid://c536k4wyxiue8" path="res://player/badguy_bullet_pm.tres" id="2_mvdyf"]
+[ext_resource type="QuadMesh" uid="uid://cpb6vc3gpgy8m" path="res://player/badguy_bullet_dp.tres" id="3_t2q57"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj8qx"]
+shading_mode = 0
+albedo_color = Color(0.607843, 1, 0.47451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v8qja"]
+material = SubResource("StandardMaterial3D_pj8qx")
+radius = 1.0
+radial_segments = 16
+rings = 8
+is_hemisphere = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rtl8c"]
+radius = 0.319399
+
+[node name="Bullet" type="Area3D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_wi5qy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_v8qja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rtl8c")
+
+[node name="LargeParticles" type="GPUParticles3D" parent="."]
+amount = 16
+lifetime = 0.25
+process_material = ExtResource("2_mvdyf")
+draw_pass_1 = ExtResource("3_t2q57")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
