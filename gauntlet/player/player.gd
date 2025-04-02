@@ -58,6 +58,9 @@ func _physics_process(delta: float) -> void:
 		shot_timer.start()
 		play_animation(lizardprince_attack)
 
+	if can_shoot == false:
+		return
+
 	# Mines
 	if Input.is_action_just_pressed("player_mine"):
 		mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
