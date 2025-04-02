@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1700w1hqtitw" path="res://player/imported/lizardprince_attack.glb" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.216171
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -28,6 +29,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1,
 
 [node name="lizardprince_win" parent="." instance=ExtResource("4_qjkh3")]
 unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lizardprince_win" index="0"]
 bones/1/position = Vector3(0.157638, 0.419169, -0.0796318)
