@@ -52,7 +52,7 @@ script = ExtResource("3_g1dw6")
 MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
-[node name="InvisibilityTimer" type="Timer" parent="."]
+[node name="PhasingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true

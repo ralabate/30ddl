@@ -53,6 +53,10 @@ func toggle_damage_overlay(on: bool) -> void:
 		mesh.material_overlay = damage_overlay if on else null
 
 
+func toggle_navigation_timer(on: bool) -> void:
+	navigation_timer.paused = not on
+
+
 func _on_navtimer_timeout() -> void:
 	if target != null:
 		update_movement_target(target.global_position)

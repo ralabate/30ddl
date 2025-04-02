@@ -32,7 +32,7 @@ func spawn_player() -> void:
 	player.shoot.connect(_on_player_shoot)
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
-	player.phasing_activated.connect(_on_player_activated_phasing)
+	player.phasing_toggled.connect(_on_player_toggled_phasing)
 	player.death.connect(_on_player_died)
 	player.done_winning.connect(_on_player_done_winning)
 
@@ -71,6 +71,9 @@ func clean_up() -> void:
 	var spawners = get_tree().get_nodes_in_group("spawners")
 	for spawner in spawners:
 		spawner.queue_free()
+		
+	if player != null and not player.is_queued_for_deletion():
+		player.queue_free()
 
 
 func _on_player_shoot(
@@ -102,8 +105,10 @@ func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
 	decoy.position = location
 
 
-func _on_player_activated_phasing() -> void:
-	pass
+func _on_player_toggled_phasing(on: bool) -> void:
+	var badguys = get_tree().get_nodes_in_group("badguys")
+	for badguy in badguys:
+		badguy.toggle_navigation_timer(not on)
 
 
 func _on_player_died() -> void:

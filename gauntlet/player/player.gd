@@ -5,7 +5,7 @@ class_name Player
 signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: PackedScene, location: Vector3)
 signal decoy_spawned(decoy: PackedScene, location: Vector3)
-signal phasing_activated
+signal phasing_toggled(on: bool)
 signal death
 signal done_winning
 
@@ -19,7 +19,7 @@ signal done_winning
 @onready var lizardprince_win = %lizardprince_win
 
 @onready var health_component = %HealthComponent
-@onready var invisibility_timer = %InvisibilityTimer
+@onready var phasing_timer = %PhasingTimer
 
 var bullet_template = preload("res://player/bullet.tscn")
 var mine_template = preload("res://player/mine.tscn")
@@ -40,7 +40,7 @@ func _ready() -> void:
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	add_child(shot_timer)
 	
-	invisibility_timer.timeout.connect(_on_invisibility_timer_timeout)
+	phasing_timer.timeout.connect(_on_phasing_timer_timeout)
 	health_component.death.connect(_on_death)
 
 	play_animation(lizardprince_idle)
@@ -69,7 +69,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_phase"):
 		self.set_collision_mask_value(1, false)
 		toggle_invisibility_material(true)
-		invisibility_timer.start()
+		phasing_timer.start()
+		phasing_toggled.emit(true)
 
 	# Gravity
 	if not is_on_floor():
@@ -127,11 +128,11 @@ func _on_shot_timer_timeout() -> void:
 	can_shoot = true
 
 
-func _on_invisibility_timer_timeout() -> void:
+func _on_phasing_timer_timeout() -> void:
 	self.set_collision_mask_value(1, true)
 	toggle_invisibility_material(false)
+	phasing_toggled.emit(false)
 
 
 func _on_death() -> void:
 	death.emit()
-	queue_free()
