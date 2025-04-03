@@ -17,6 +17,7 @@ signal done_winning
 @onready var lizardprince_idle = %lizardprince_idle
 @onready var lizardprince_attack = %lizardprince_attack
 @onready var lizardprince_win = %lizardprince_win
+@onready var lizardprince_die = %lizardprince_die
 
 @onready var health_component = %HealthComponent
 @onready var phasing_timer = %PhasingTimer
@@ -106,6 +107,7 @@ func play_animation(anim: Node3D) -> void:
 	lizardprince_attack.hide()
 	lizardprince_idle.hide()
 	lizardprince_win.hide()
+	lizardprince_die.hide()
 	
 	# This should work if we keep consistent naming
 	anim.show()
@@ -138,4 +140,7 @@ func _on_phasing_timer_timeout() -> void:
 
 
 func _on_death() -> void:
+	play_animation(lizardprince_die)
+	var animation_player = lizardprince_die.get_node("AnimationPlayer") as AnimationPlayer
+	await animation_player.animation_finished
 	death.emit()
