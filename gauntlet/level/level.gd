@@ -39,8 +39,9 @@ func spawn_player() -> void:
 
 func configure_badguy(badguy: Node3D) -> void:
 	badguy.target = player
-	var autofire_component = badguy.get_node("AutofireComponent") as AutofireComponent
-	if autofire_component != null:
+
+	if badguy.has_node("AutofireComponent"):
+		var autofire_component = badguy.get_node("AutofireComponent") as AutofireComponent
 		autofire_component.fired.connect(_on_badguy_fired_bullet)
 
 
