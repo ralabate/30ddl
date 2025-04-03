@@ -8,6 +8,7 @@ signal player_lost
 @onready var badguy_template = preload("res://badguys/badguy.tscn")
 @onready var player_template = preload("res://player/player.tscn")
 @onready var spawner_template = preload("res://badguys/badguy_spawner.tscn")
+@onready var powerpill_template = preload("res://player/power_pill.tscn")
 
 @onready var player_spawner = %PlayerSpawner
 
@@ -39,6 +40,7 @@ func spawn_player() -> void:
 
 func configure_badguy(badguy: Node3D) -> void:
 	badguy.target = player
+	badguy.death.connect(_on_badguy_died)
 
 	if badguy.has_node("AutofireComponent"):
 		var autofire_component = badguy.get_node("AutofireComponent") as AutofireComponent
@@ -139,6 +141,12 @@ func _on_badguy_fired_bullet(
 	add_child(bullet)
 	bullet.rotation = direction
 	bullet.position = location
+
+
+func _on_badguy_died(location: Vector3) -> void:
+	var power_pill = powerpill_template.instantiate()
+	add_child(power_pill)
+	power_pill.position = location
 
 
 func _on_spawner_died() -> void:

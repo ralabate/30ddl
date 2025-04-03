@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 
+signal death(location: Vector3)
+
 @export var damage_overlay: ShaderMaterial
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
@@ -75,4 +77,5 @@ func _on_damage_received(amount: float) -> void:
 
 
 func _on_death() -> void:
+	death.emit(position)
 	queue_free()
