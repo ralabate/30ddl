@@ -31,7 +31,7 @@ autostart = true
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_becgi")
-MAX_HEALTH = 5
+MAX_HEALTH = 1
 metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
 [node name="PlayerDamageArea" type="Area3D" parent="."]
