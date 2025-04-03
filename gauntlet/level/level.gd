@@ -147,6 +147,7 @@ func _on_badguy_died(location: Vector3) -> void:
 	var power_pill = powerpill_template.instantiate()
 	add_child(power_pill)
 	power_pill.position = location
+	power_pill.player = player
 
 
 func _on_spawner_died() -> void:
