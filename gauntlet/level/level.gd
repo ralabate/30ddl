@@ -37,6 +37,13 @@ func spawn_player() -> void:
 	player.done_winning.connect(_on_player_done_winning)
 
 
+func configure_badguy(badguy: Node3D) -> void:
+	badguy.target = player
+	var autofire_component = badguy.get_node("AutofireComponent") as AutofireComponent
+	if autofire_component != null:
+		autofire_component.fired.connect(_on_badguy_fired_bullet)
+
+
 func start_game() -> void:
 	spawn_player()
 
@@ -48,7 +55,7 @@ func start_game() -> void:
 		
 	var badguys = get_tree().get_nodes_in_group("badguys")
 	for badguy in badguys:
-		badguy.target = player
+		configure_badguy(badguy)
 
 
 func clean_up() -> void:
@@ -122,8 +129,15 @@ func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
 func _on_spawned_badguy(badguy: Node3D, position: Vector3) -> void:
 	if player != null and not player.is_queued_for_deletion():
 		add_child(badguy)
-		badguy.target = player
 		badguy.position = position
+		configure_badguy(badguy)
+
+
+func _on_badguy_fired_bullet(
+		bullet: Node3D, direction: Vector3, location: Vector3) -> void:
+	add_child(bullet)
+	bullet.rotation = direction
+	bullet.position = location
 
 
 func _on_spawner_died() -> void:

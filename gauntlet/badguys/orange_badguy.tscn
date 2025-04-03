@@ -48,4 +48,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="AutofireComponent" type="Node" parent="."]
 script = ExtResource("5_frc6e")
+TIME_BETWEEN_SHOTS = 4.0
 metadata/_custom_type_script = "uid://b72gu3rundnc0"

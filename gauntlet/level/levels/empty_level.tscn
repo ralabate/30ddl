@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd1rxrkqfuiqk"]
+[gd_scene load_steps=6 format=3 uid="uid://bd1rxrkqfuiqk"]
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://level/level.gd" id="1_53vyl"]
 [ext_resource type="PackedScene" uid="uid://ce84xhnoym281" path="res://level/levels/playfield_0.tscn" id="2_lvwwe"]
 [ext_resource type="PackedScene" uid="uid://dcyd6q7bb3k6m" path="res://badguys/badguy_spawner.tscn" id="3_53vyl"]
-[ext_resource type="PackedScene" uid="uid://dysqmwq3wem2k" path="res://badguys/badguy.tscn" id="4_lvwwe"]
 [ext_resource type="PackedScene" uid="uid://bugwiltjmg52c" path="res://badguys/orange_badguy.tscn" id="5_mb677"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
@@ -11,7 +10,7 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.950226, 0.908877, 0.874709, 1)
 
-[node name="Level0" type="Node3D"]
+[node name="EmptyLevel" type="Node3D"]
 script = ExtResource("1_53vyl")
 
 [node name="ModularLevel" parent="." instance=ExtResource("2_lvwwe")]
@@ -25,19 +24,12 @@ fov = 15.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
-[node name="BadguySpawner" parent="." instance=ExtResource("3_53vyl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -7)
-badguy_template = ExtResource("4_lvwwe")
-
-[node name="Timer" parent="BadguySpawner" index="0"]
-wait_time = 1.0
-
 [node name="BadguySpawner2" parent="." instance=ExtResource("3_53vyl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 7)
 badguy_template = ExtResource("5_mb677")
 
 [node name="Timer" parent="BadguySpawner2" index="0"]
-wait_time = 1.0
+wait_time = 2.0
 
-[editable path="BadguySpawner"]
+[editable path="ModularLevel"]
 [editable path="BadguySpawner2"]

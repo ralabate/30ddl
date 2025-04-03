@@ -5,10 +5,6 @@ extends Area3D
 @export var DAMAGE = 1
 
 
-func _ready() -> void:
-	add_to_group("player_bullets")
-
-
 func _physics_process(delta: float) -> void:
 	translate_object_local(Vector3.FORWARD * SPEED * delta)
 
