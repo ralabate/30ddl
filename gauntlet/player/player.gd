@@ -48,6 +48,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Block input when in a cutscene (aka playing dying or winning anim)
+	if current_animated_mesh.name == "lizardprince_win" or current_animated_mesh.name == "lizardprince_die":
+		return
+
 	# Shooting
 	if Input.is_action_pressed("ui_accept") and can_shoot:
 		shoot.emit(
@@ -114,7 +118,7 @@ func play_animation(anim: Node3D) -> void:
 	anim.get_node("AnimationPlayer").play(anim.name)
 	
 	current_animated_mesh = anim
-
+	Log.info("Anim name: " +  anim.name)
 
 func toggle_invisibility_material(on: bool) -> void:
 	var mesh = current_animated_mesh.get_node("Skeleton3D/Mesh") as MeshInstance3D
