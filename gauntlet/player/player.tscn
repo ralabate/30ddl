@@ -47,4 +47,9 @@ unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
 
+[node name="DebugLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+
 [editable path="lizardprince_win"]

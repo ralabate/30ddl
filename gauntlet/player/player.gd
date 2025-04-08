@@ -28,7 +28,11 @@ var decoy_template = preload("res://player/decoy.tscn")
 
 var can_shoot = true
 var shot_timer: Timer
+
 var current_animated_mesh: Node3D
+
+var pill_count = 0
+var current_powerup = -1
 
 
 func _ready() -> void:
@@ -45,6 +49,10 @@ func _ready() -> void:
 	health_component.death.connect(_on_death)
 
 	play_animation(lizardprince_idle)
+
+
+func _process(delta: float) -> void:
+	$DebugLabel.text = "Powerup: [%s] Pills: [%s]" % [current_powerup, pill_count]
 
 
 func _physics_process(delta: float) -> void:
@@ -66,19 +74,18 @@ func _physics_process(delta: float) -> void:
 	if can_shoot == false:
 		return
 
-	# Mines
+	# Powerups
 	if Input.is_action_just_pressed("player_mine"):
-		mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
-
-	# Player decoys
-	if Input.is_action_just_pressed("player_decoy"):
-		decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
-		
-	if Input.is_action_just_pressed("player_phase"):
-		self.set_collision_mask_value(1, false)
-		toggle_invisibility_material(true)
-		phasing_timer.start()
-		phasing_toggled.emit(true)
+		match current_powerup:
+			0:
+				mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
+			1:
+				decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
+			2:
+				self.set_collision_mask_value(1, false)
+				toggle_invisibility_material(true)
+				phasing_timer.start()
+				phasing_toggled.emit(true)
 
 	# Gravity
 	if not is_on_floor():
@@ -105,6 +112,17 @@ func _physics_process(delta: float) -> void:
 
 func set_firing_rate(rate: float) -> void:
 	shot_timer.wait_time = TIME_BETWEEN_SHOTS * rate
+
+
+func activate_powerup(id: int):
+	if pill_count > 0:
+		pill_count = 0
+		current_powerup = id
+		Log.info("Activating powerup ID: [%s]" % [id])
+
+
+func add_powerpill() -> void:
+	pill_count += 1
 
 
 func play_animation(anim: Node3D) -> void:
