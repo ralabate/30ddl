@@ -22,6 +22,12 @@ signal done_winning
 @onready var health_component = %HealthComponent
 @onready var phasing_timer = %PhasingTimer
 
+enum Powerup {
+	MINE,
+	DECOY,
+	PHASING,
+}
+
 var bullet_template = preload("res://player/bullet.tscn")
 var mine_template = preload("res://player/mine.tscn")
 var decoy_template = preload("res://player/decoy.tscn")
@@ -77,11 +83,11 @@ func _physics_process(delta: float) -> void:
 	# Powerups
 	if Input.is_action_just_pressed("player_mine"):
 		match current_powerup:
-			0:
+			Powerup.MINE:
 				mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
-			1:
+			Powerup.DECOY:
 				decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
-			2:
+			Powerup.PHASING:
 				self.set_collision_mask_value(1, false)
 				toggle_invisibility_material(true)
 				phasing_timer.start()
@@ -114,7 +120,7 @@ func set_firing_rate(rate: float) -> void:
 	shot_timer.wait_time = TIME_BETWEEN_SHOTS * rate
 
 
-func activate_powerup(id: int):
+func activate_powerup(id: Powerup):
 	if pill_count > 0:
 		pill_count = 0
 		current_powerup = id
