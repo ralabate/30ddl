@@ -5,7 +5,7 @@ var current_level: Level
 
 
 var levels = [
-	preload("res://level/levels/level_0.tscn"),
+	#preload("res://level/levels/level_0.tscn"),
 	preload("res://level/levels/level_1.tscn"),
 ]
 
