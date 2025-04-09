@@ -20,8 +20,12 @@ func add_egg() -> void:
 		var egg = get_child(i)
 		egg.position.x = shield_radius * cos(angle)
 		egg.position.z = shield_radius * sin(angle)
-		egg.area_entered.connect(_on_area_entered_egg.bind(egg))
-		egg.body_entered.connect(_on_body_entered_egg.bind(egg))
+		
+		if not egg.area_entered.is_connected(_on_area_entered_egg):
+			egg.area_entered.connect(_on_area_entered_egg.bind(egg))
+		
+		if not egg.body_entered.is_connected(_on_body_entered_egg):
+			egg.body_entered.connect(_on_body_entered_egg.bind(egg))
 
 
 
