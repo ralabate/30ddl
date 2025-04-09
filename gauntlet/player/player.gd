@@ -21,6 +21,8 @@ signal done_winning
 
 @onready var health_component = %HealthComponent
 @onready var phasing_timer = %PhasingTimer
+@onready var egg_inventory = %EggInventory
+
 
 enum Powerup {
 	MINE,
@@ -125,6 +127,7 @@ func activate_powerup(id: Powerup):
 
 func add_powerpill() -> void:
 	pill_count += 1
+	egg_inventory.add_egg()
 
 
 func play_animation(anim: Node3D) -> void:

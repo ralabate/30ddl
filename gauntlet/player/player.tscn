@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwl2b12apn8uh"]
+[gd_scene load_steps=10 format=3 uid="uid://bwl2b12apn8uh"]
 
 [ext_resource type="Script" uid="uid://c2rbukwe2bpc7" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="Material" uid="uid://dsnj5agftxsoj" path="res://player/invisibility_override.tres" id="2_g6k8r"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d1700w1hqtitw" path="res://player/imported/lizardprince_attack.glb" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://bbol6uo23fllb" path="res://player/imported/lizardprince_die.glb" id="5_boad6"]
 [ext_resource type="Script" uid="uid://bfmc1ypl5qbc1" path="res://player/egg_inventory.gd" id="8_rgyib"]
-[ext_resource type="PackedScene" uid="uid://bu2q4g6nb3e5p" path="res://player/egg_shield.tscn" id="9_hg6s5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 radius = 0.216171
@@ -55,18 +54,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="EggInventory" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("8_rgyib")
-
-[node name="EggShield" parent="EggInventory" instance=ExtResource("9_hg6s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="EggShield2" parent="EggInventory" instance=ExtResource("9_hg6s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="EggShield3" parent="EggInventory" instance=ExtResource("9_hg6s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-
-[node name="EggShield4" parent="EggInventory" instance=ExtResource("9_hg6s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [editable path="lizardprince_win"]
