@@ -120,6 +120,7 @@ func set_firing_rate(rate: float) -> void:
 
 func activate_powerup(id: Powerup):
 	if pill_count > 0:
+		egg_inventory.remove_eggs(pill_count)
 		pill_count = 0
 		current_powerup = id
 		Log.info("Activating powerup ID: [%s]" % [id])

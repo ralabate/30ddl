@@ -12,21 +12,30 @@ func _physics_process(delta: float) -> void:
 
 
 func add_egg() -> void:
-	add_child(egg_template.instantiate())
+	var egg = egg_template.instantiate()
+	add_child(egg)
 
+	egg.area_entered.connect(_on_area_entered_egg.bind(egg))
+	egg.body_entered.connect(_on_body_entered_egg.bind(egg))
+
+	_update_egg_placement()
+
+
+func remove_eggs(count: int) -> void:
+	for i in range(count):
+		var egg = get_child(i)
+		egg.queue_free()
+
+	_update_egg_placement()
+
+
+func _update_egg_placement() -> void:
 	var angle_increment = 360.0 / float(get_child_count())
 	for i in range(get_child_count()):
 		var angle = deg_to_rad(i * angle_increment)
 		var egg = get_child(i)
 		egg.position.x = shield_radius * cos(angle)
 		egg.position.z = shield_radius * sin(angle)
-		
-		if not egg.area_entered.is_connected(_on_area_entered_egg):
-			egg.area_entered.connect(_on_area_entered_egg.bind(egg))
-		
-		if not egg.body_entered.is_connected(_on_body_entered_egg):
-			egg.body_entered.connect(_on_body_entered_egg.bind(egg))
-
 
 
 func _add_damage_to(node: Node3D) -> void:
