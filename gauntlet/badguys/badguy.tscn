@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://bund4vdf4u4yo"
 
 [node name="PlayerDamageArea" type="Area3D" parent="."]
 unique_name_in_owner = true
-collision_layer = 4
+collision_layer = 64
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]

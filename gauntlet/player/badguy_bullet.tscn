@@ -36,5 +36,3 @@ amount = 16
 lifetime = 0.25
 process_material = ExtResource("2_mvdyf")
 draw_pass_1 = ExtResource("3_t2q57")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,6 +5,10 @@ extends Area3D
 @export var DAMAGE = 1
 
 
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+
 func _physics_process(delta: float) -> void:
 	translate_object_local(Vector3.FORWARD * SPEED * delta)
 

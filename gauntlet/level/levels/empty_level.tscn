@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd1rxrkqfuiqk"]
+[gd_scene load_steps=7 format=3 uid="uid://bd1rxrkqfuiqk"]
 
 [ext_resource type="Script" uid="uid://circq55qpjcvk" path="res://level/level.gd" id="1_53vyl"]
 [ext_resource type="PackedScene" uid="uid://ce84xhnoym281" path="res://level/levels/playfield_0.tscn" id="2_lvwwe"]
 [ext_resource type="PackedScene" uid="uid://dtjgi7fn2nfx1" path="res://player/stores/mine_store.tscn" id="3_53vyl"]
 [ext_resource type="PackedScene" uid="uid://bb66s3pjp42pv" path="res://player/power_pill.tscn" id="4_lvwwe"]
+[ext_resource type="PackedScene" uid="uid://dysqmwq3wem2k" path="res://badguys/badguy.tscn" id="5_mb677"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
@@ -35,5 +36,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="PowerPill3" parent="." instance=ExtResource("4_lvwwe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+
+[node name="Badguy" parent="." instance=ExtResource("5_mb677")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
+
+[node name="Badguy2" parent="." instance=ExtResource("5_mb677")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -6)
 
 [editable path="ModularLevel"]
