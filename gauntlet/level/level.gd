@@ -83,7 +83,7 @@ func _on_player_shoot(
 	var bullet = bullet_template.instantiate()
 	bullet.add_to_group("bullets")
 	add_child(bullet)
-	bullet.rotation = rotation
+	bullet.look_at(rotation)
 	bullet.position = location
 
 

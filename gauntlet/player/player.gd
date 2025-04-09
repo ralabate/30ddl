@@ -34,6 +34,7 @@ var decoy_template = preload("res://player/decoy.tscn")
 
 var can_shoot = true
 var shot_timer: Timer
+var shot_direction: Vector3
 
 var current_animated_mesh: Node3D
 
@@ -57,10 +58,6 @@ func _ready() -> void:
 	play_animation(lizardprince_idle)
 
 
-func _process(delta: float) -> void:
-	$DebugLabel.text = "Powerup: [%s] Pills: [%s]" % [current_powerup, pill_count]
-
-
 func _physics_process(delta: float) -> void:
 	# Block input when in a cutscene (aka playing dying or winning anim)
 	if current_animated_mesh.name == "lizardprince_win" or current_animated_mesh.name == "lizardprince_die":
@@ -70,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept") and can_shoot:
 		shoot.emit(
 				bullet_template,
-				rotation,
+				shot_direction,
 				transform.origin + transform.basis.z * 0.2
 			)
 		can_shoot = false
@@ -103,14 +100,13 @@ func _physics_process(delta: float) -> void:
 
 	if direction:
 		# Rotate to face the direction we're moving
-		rotation.y = atan2(-direction.x, -direction.z)
-
+		current_animated_mesh.rotation.y = atan2(direction.x, direction.z)
 		self.velocity.x = direction.x * SPEED
 		self.velocity.z = direction.z * SPEED
-
+		shot_direction = direction
 	else:
-		self.velocity.x = move_toward(velocity.x, 0, SPEED)
-		self.velocity.z = move_toward(velocity.z, 0, SPEED)
+		self.velocity.x = 0
+		self.velocity.z = 0
 
 	# Do it
 	move_and_slide()
