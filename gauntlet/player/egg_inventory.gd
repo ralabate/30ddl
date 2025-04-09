@@ -5,6 +5,9 @@ extends Node3D
 @export var shield_radius = 1.0
 
 var egg_template = preload("res://player/egg_shield.tscn")
+var egg_count: int:
+	get:
+		return get_child_count()
 
 
 func _physics_process(delta: float) -> void:

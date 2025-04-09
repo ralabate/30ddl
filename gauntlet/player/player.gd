@@ -40,7 +40,6 @@ var shot_direction: Vector3
 
 var current_animated_mesh: Node3D
 
-var pill_count = 0
 var current_powerup = -1
 
 
@@ -119,15 +118,13 @@ func set_firing_rate(rate: float) -> void:
 
 
 func activate_powerup(id: Powerup):
-	if pill_count > 0:
-		egg_inventory.remove_eggs(pill_count)
-		pill_count = 0
+	if egg_inventory.egg_count > 0:
+		egg_inventory.remove_eggs(egg_inventory.egg_count)
 		current_powerup = id
 		Log.info("Activating powerup ID: [%s]" % [id])
 
 
 func add_powerpill() -> void:
-	pill_count += 1
 	egg_inventory.add_egg()
 
 
