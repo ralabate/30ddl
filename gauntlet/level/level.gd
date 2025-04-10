@@ -78,17 +78,13 @@ func clean_up() -> void:
 		player.queue_free()
 
 
-func _on_player_shoot(
-		bullet_template: PackedScene, rotation: Vector3, location: Vector3):
-	var bullet = bullet_template.instantiate()
-	bullet.add_to_group("bullets")
+func _on_player_shoot(bullet: Node3D, rotation: Vector3, location: Vector3):
 	add_child(bullet)
 	bullet.look_at(rotation)
 	bullet.position = location
 
 
-func _on_player_spawned_mine(mine_template: PackedScene, location: Vector3):
-	var mine = mine_template.instantiate()
+func _on_player_spawned_mine(mine: Node3D, location: Vector3):
 	mine.exploded.connect(_on_mine_exploded)
 	add_child(mine)
 	mine.position = location
@@ -100,8 +96,7 @@ func _on_mine_exploded(explosion_template: PackedScene, location: Vector3):
 	explosion.position = location
 
 
-func _on_player_spawned_decoy(decoy_template: PackedScene, location: Vector3):
-	var decoy = decoy_template.instantiate()
+func _on_player_spawned_decoy(decoy: Node3D, location: Vector3):
 	decoy.done.connect(_on_decoy_is_done)
 	add_child(decoy)
 	decoy.position = location

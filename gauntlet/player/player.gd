@@ -2,9 +2,9 @@ extends CharacterBody3D
 class_name Player
 
 
-signal shoot(bullet: PackedScene, direction: Vector3, location: Vector3)
-signal mine_spawned(mine: PackedScene, location: Vector3)
-signal decoy_spawned(decoy: PackedScene, location: Vector3)
+signal shoot(bullet: Node3D, direction: Vector3, location: Vector3)
+signal mine_spawned(mine: Node3D, location: Vector3)
+signal decoy_spawned(decoy: Node3D, location: Vector3)
 signal phasing_toggled(on: bool)
 signal death
 signal done_winning
@@ -67,10 +67,10 @@ func _physics_process(delta: float) -> void:
 	# Shooting
 	if Input.is_action_pressed("ui_accept") and can_shoot:
 		shoot.emit(
-				bullet_template,
-				shot_direction,
-				transform.origin + transform.basis.z * 0.2
-			)
+			bullet_template.instantiate(),
+			shot_direction,
+			transform.origin + transform.basis.z * 0.2
+		)
 		can_shoot = false
 		shot_timer.start()
 		play_animation(lizardprince_attack)
@@ -82,9 +82,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_mine"):
 		match current_powerup:
 			Powerup.MINE:
-				mine_spawned.emit(mine_template, transform.origin - transform.basis.y)
+				mine_spawned.emit(
+					mine_template.instantiate(),
+					transform.origin - transform.basis.y
+				)
 			Powerup.DECOY:
-				decoy_spawned.emit(decoy_template, transform.origin - transform.basis.y)
+				var decoy = decoy_template.instantiate()
+				decoy_spawned.emit(decoy, transform.origin - transform.basis.y)
 			Powerup.PHASING:
 				self.set_collision_mask_value(1, false)
 				toggle_invisibility_material(true)
