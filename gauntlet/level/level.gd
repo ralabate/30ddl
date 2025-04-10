@@ -30,12 +30,14 @@ func spawn_player() -> void:
 	player = player_template.instantiate()
 	add_child(player)
 	player.position = player_spawner.global_position
-	player.shoot.connect(_on_player_shoot)
+	player.bullet_spawned.connect(_on_player_spawned_bullet)
 	player.mine_spawned.connect(_on_player_spawned_mine)
 	player.decoy_spawned.connect(_on_player_spawned_decoy)
 	player.phasing_toggled.connect(_on_player_toggled_phasing)
 	player.death.connect(_on_player_died)
 	player.done_winning.connect(_on_player_done_winning)
+	
+	player.add_egg()
 
 
 func configure_badguy(badguy: Node3D) -> void:
@@ -78,7 +80,7 @@ func clean_up() -> void:
 		player.queue_free()
 
 
-func _on_player_shoot(bullet: Node3D, rotation: Vector3, location: Vector3):
+func _on_player_spawned_bullet(bullet: Node3D, rotation: Vector3, location: Vector3):
 	add_child(bullet)
 	bullet.look_at(rotation)
 	bullet.position = location
@@ -98,6 +100,8 @@ func _on_mine_exploded(explosion_template: PackedScene, location: Vector3):
 
 func _on_player_spawned_decoy(decoy: Node3D, location: Vector3):
 	decoy.done.connect(_on_decoy_is_done)
+	decoy.bullet_spawned.connect(_on_decoy_spawned_bullet)
+	player.bullet_spawned.connect(decoy._on_player_spawned_bullet)
 	add_child(decoy)
 	decoy.position = location
 
@@ -122,6 +126,12 @@ func _on_decoy_is_done(affected_list: Array[Node3D]) -> void:
 		if affected != null and is_queued_for_deletion() == false\
 		and affected.is_in_group("badguys"):
 			affected.target = player
+
+
+func _on_decoy_spawned_bullet(bullet: Node3D, rotation: Vector3, location: Vector3):
+	add_child(bullet)
+	bullet.look_at(rotation)
+	bullet.position = location
 
 
 func _on_spawned_badguy(badguy: Node3D, position: Vector3) -> void:

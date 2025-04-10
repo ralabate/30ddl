@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 
-signal shoot(bullet: Node3D, direction: Vector3, location: Vector3)
+signal bullet_spawned(bullet: Node3D, direction: Vector3, location: Vector3)
 signal mine_spawned(mine: Node3D, location: Vector3)
 signal decoy_spawned(decoy: Node3D, location: Vector3)
 signal phasing_toggled(on: bool)
@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	# Shooting
 	if Input.is_action_pressed("ui_accept") and can_shoot:
-		shoot.emit(
+		bullet_spawned.emit(
 			bullet_template.instantiate(),
 			shot_direction,
 			transform.origin + transform.basis.z * 0.2
@@ -128,7 +128,7 @@ func activate_powerup(id: Powerup):
 		Log.info("Activating powerup ID: [%s]" % [id])
 
 
-func add_powerpill() -> void:
+func add_egg() -> void:
 	egg_inventory.add_egg()
 
 

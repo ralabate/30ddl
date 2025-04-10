@@ -25,6 +25,6 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		var player = body as Player
-		player.add_powerpill()
+		player.add_egg()
 
 	queue_free()
