@@ -95,6 +95,8 @@ func _physics_process(delta: float) -> void:
 				phasing_timer.start()
 				phasing_toggled.emit(true)
 
+		current_powerup = -1
+
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
