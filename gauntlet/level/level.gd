@@ -36,8 +36,6 @@ func spawn_player() -> void:
 	player.phasing_toggled.connect(_on_player_toggled_phasing)
 	player.death.connect(_on_player_died)
 	player.done_winning.connect(_on_player_done_winning)
-	
-	player.add_egg()
 
 
 func configure_badguy(badguy: Node3D) -> void:
